@@ -1,0 +1,37 @@
+<p>Create new Session</p>
+
+<% if @session.errors.any? %>
+   <% @session.errors.full_messages.each do |error|%>
+   <p cl=ass="text-danger">
+      <%= error%>
+   </p>
+   <% end %>
+<% end %>
+
+
+
+<%=form_for @session, html: { multipart: true } do |f|  %>
+   <p>   <%= f.label :name %>
+         <%= f.text_field :name %>
+   </p>
+   <p>
+         <%= f.label :description %>
+   <%= f.text_field :description %>   
+   </p>
+   <p>
+      <%= f.label :date %>
+      <%= f.text_field :date %>   
+   </p>
+   <p>
+      <%= f.file_field :image %>
+   </p>
+   
+   
+
+   <%= f.submit %>
+   
+<% end %>
+
+
+<hr>
+<%= link_to "Go back to Index", sessions_path %>

@@ -1,0 +1,11 @@
+<h1>Sessions index</h1>
+
+<% @sessions.each do |session| %>
+   <p><%= session.id %> - Name: <%= session.name %> - Description: <%= session.description %> - <%= link_to "Edit", session_path(session)%> </p>
+   
+   
+
+<% end %>
+<hr>
+<div class="test">Prueba</div>
+<%= link_to "Create new Session", new_session_path %>

@@ -1,0 +1,13 @@
+<h1>Sessions show</h1>
+
+<p>Name: <%=  @session.name %></p>
+<p>Description: <%=  @session.description %></p>
+<p>Session Date: <%=  @session.date %></p>
+<p>File Name: <%=  @session.image_file_name %></p>
+<p>File Size: <%=  @session.image_file_size %></p>
+<p class="image"><%= image_tag @session.image.url %></p>
+
+
+<hr>
+<div class="test">Prueba</div>
+<%= link_to "Index", sessions_path %>
