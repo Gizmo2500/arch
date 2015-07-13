@@ -28,6 +28,8 @@
 
 <%= link_to "Index", sessions_path , :class => :"btn btn-primary" %>
 <%= link_to "Delete All comments", sessions_path , :class => :"btn btn-warning delete-com" %>
+<%= link_to "Save", sessions_path , :class => :"btn btn-warning save-com" %>
 
 
-
+<%= content_tag :div, class: "sess_information", data: {session: @session} do %>
+<% end %>

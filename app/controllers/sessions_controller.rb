@@ -21,6 +21,8 @@ class SessionsController < ApplicationController
   end
 
   def update
+    @posts = params[:data_value]
+    # binding.pry
     @session = Session.find params[:id]
     @session.update_attributes session_params 
     if @session.save

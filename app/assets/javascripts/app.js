@@ -29,9 +29,7 @@ $(document).ready(function() {
       $(".post").remove();
    });
    
-      
-
-   
+         
 // ----------- Dragg Posts -----------
    var $dragging = null;
 
@@ -53,10 +51,21 @@ $(document).ready(function() {
     });
 
 
+// ----------- Testing (Passing Rails variables to Javascript) -----------
+    var session = $('.sess_information').data('session');
+    // alert(a.name);
 
-
-
-
+    $('.save-com').on("click", function (e){
+         e.preventDefault();
+         var allPosts = $('.post');
+         console.log(allPosts);
+         $.ajax ({
+            url : "/sessions/"+ session.id,
+            type : "post",
+            data : {data_value: JSON.stringify(allPosts)}
+         });
+    });
+    
 
 
 
