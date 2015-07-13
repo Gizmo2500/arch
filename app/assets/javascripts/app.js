@@ -1,38 +1,56 @@
 $(document).ready(function() { 
 
+// ----------- Adds Posts -----------
    $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
       var y = e.pageY + 'px';
-      var img = $('<img src="" alt="Camilo" />');
-      var div = $('<div class="post">').css({
+      var name = $('<p class="label label-success" > Camilo </p>'); 
+      var div = $('<div class="post ">').css({
          "position": "absolute",
          "left": x,
          "top": y
       });
       console.log(div[0]);
-      div.append(img);
+      div.append(name);
       $(document.body).append(div);
    });
 
-   $(document).on("click", ".post",function(){
+// ----------- Delete Posts -----------
+   $(document).on("dblclick", ".post",function(){
       var a = confirm("Do you want to delete this post?");
       if (a) {
          this.remove();
       }
    });
 
+// ----------- Delete all Posts -----------
    $(document).on("click", ".delete-com", function(e){
       e.preventDefault();
       $(".post").remove();
-
-      
    });
    
       
 
    
+// ----------- Dragg Posts -----------
+   var $dragging = null;
 
+    $(document.body).on("mousemove", function(e) {
+        if ($dragging) {
+            $dragging.offset({
+                top: e.pageY,
+                left: e.pageX
+            });
+        }
+    });
 
+    $(document.body).on("mousedown", ".post", function (e) {
+        $dragging = $(e.target);
+    });
+
+    $(document.body).on("mouseup", function (e) {
+        $dragging = null;
+    });
 
 
 

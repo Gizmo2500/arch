@@ -12,10 +12,10 @@
    <p><%= f.label :name %>        <%= f.text_field :name %></p>   
    <p><%= f.label :description %> <%= f.text_field :description %></p>   
    <p><%= f.label :date %>        <%= f.text_field :date %></p>
-   <p><%= f.label :image %>       <%= f.text_field :image %></p>
+   <p><%= f.label :image %>       <%=  @session.image_file_name %></p>
    <p><%= f.label "Change Image"%> <%= f.file_field :image %></p>
    
-   <%= f.submit %>
+   <%= f.submit "Update Session" %>
    
 <% end %>
 
