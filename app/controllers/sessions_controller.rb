@@ -16,10 +16,29 @@ class SessionsController < ApplicationController
       end
   end
 
+  def edit
+    @session = Session.find params[:id]
+  end
+
+  def update
+    @session = Session.find params[:id]
+    @session.update_attributes session_params 
+    if @session.save
+      redirect_to sessions_path
+    else
+      render :edit
+    end
+  end
+
   def show
       @session = Session.find params[:id]
   end
 
+  def destroy
+      @session = Session.find params[:id]
+      @session.destroy
+      redirect_to sessions_path
+  end
 
   private
 

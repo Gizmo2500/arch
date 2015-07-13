@@ -1,4 +1,4 @@
-<h2>Create new Session</h2>
+<h2>Edit Session</h2>
 
 <% if @session.errors.any? %>
    <% @session.errors.full_messages.each do |error|%>
@@ -12,7 +12,8 @@
    <p><%= f.label :name %>        <%= f.text_field :name %></p>   
    <p><%= f.label :description %> <%= f.text_field :description %></p>   
    <p><%= f.label :date %>        <%= f.text_field :date %></p>
-   <p><%= f.file_field :image %></p>
+   <p><%= f.label :image %>       <%= f.text_field :image %></p>
+   <p><%= f.label "Change Image"%> <%= f.file_field :image %></p>
    
    <%= f.submit %>
    

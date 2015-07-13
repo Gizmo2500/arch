@@ -1,11 +1,6 @@
 $(document).ready(function() { 
 
-   $(".test").on("click", function (){
-      alert("Yes");
-   });
-
-
-   $(".image").click(function(e){
+   $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
       var y = e.pageY + 'px';
       var img = $('<img src="" alt="Camilo" />');
@@ -19,13 +14,19 @@ $(document).ready(function() {
       $(document.body).append(div);
    });
 
-   $('body').on("click", ".post",function(){
+   $(document).on("click", ".post",function(){
       var a = confirm("Do you want to delete this post?");
       if (a) {
          this.remove();
       }
    });
 
+   $(document).on("click", ".delete-com", function(e){
+      e.preventDefault();
+      $(".post").remove();
+
+      
+   });
    
       
 
