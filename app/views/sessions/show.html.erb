@@ -1,0 +1,35 @@
+<h1><%=  @session.name %></h1>
+
+<div class="container">
+   <div class="table-responsive">
+      <table class="table table-bordered">
+         <thead>
+         <tr class="info">
+            <th>Description</th>
+            <th>Session Date</th>
+            <th>File Name</th>
+            <th>File Size</th>
+         </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><%=  @session.description %></td>
+               <td><%=  @session.date %></td>
+               <td><%=  @session.image_file_name %></td>
+               <td><%=  @session.image_file_size %></td>
+            </tr>
+         </tbody> 
+      </table>
+   </div>
+</div>
+
+<p class="image"><%= image_tag @session.image.url %></p>
+<hr>
+
+<%= link_to "Index", sessions_path , :class => :"btn btn-primary" %>
+<%= link_to "Delete All comments", sessions_path , :class => :"btn btn-warning delete-com" %>
+<%= link_to "Save", sessions_path , :class => :"btn btn-warning save-com" %>
+
+
+<%= content_tag :div, class: "sess_information", data: {session: @session} do %>
+<% end %>

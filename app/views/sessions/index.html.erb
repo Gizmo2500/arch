@@ -1,0 +1,37 @@
+<h1>ARCH Sessions Index</h1>
+<%= link_to "Create new Session", new_session_path, :class => "btn btn-success" %>
+
+<hr>
+<div class="container">
+   <div class="table-responsive">
+      <table class="table table-striped">
+         <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Session Date</th>
+            <th>Edit</th>
+         </thead>
+         <tbody>
+         <% @sessions.each do |session| %>   
+            <tr>
+               <td><%= session.id %></td>
+               <td><%= session.name %></td>
+               <td><%= session.description %></td>
+               <td><%= session.date %></td>
+               <td>
+                  <%= link_to "Show", session_path(session), :class => "btn btn-primary"%>
+                  <%= link_to "Edit", edit_session_path(session), :class => "btn btn-danger"%>
+                  <%= link_to "Delete", session_path(session), :method => :delete,:class => "btn btn-warning", data: {confirm: "Are you Sure you want to delete this session?         NOTE: You won't be able to recover this session"} %>
+               </td>
+            </tr>
+         <% end %>      
+         </tbody>
+      </table>
+   </div>
+   
+
+</div>
+
+
+
