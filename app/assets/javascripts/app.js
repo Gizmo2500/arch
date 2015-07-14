@@ -22,31 +22,56 @@ $(document).ready(function() {
 
 // ----------- Edit Posts -----------
    $(document).on("dblclick", ".post",function(){
-      var message = $(this).children('p').text();
+      var message1 = $(this).children('p').text();
       var that = this;
-      bootbox.prompt({
+      bootbox.dialog({
+         message: '<div class="row">  ' +
+                    '<div class="col-md-12"> ' +
+                    '<form class="form-horizontal"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="col-md-2 control-label" for="name">Current comment</label> ' +
+                    '<div class="col-md-9"> ' +
+                    '<input id="name" name="name" type="text" placeholder="'+ message1+'" class="form-control input-md"> ' +
+                    '<span class="help-block">Click on Accept button!</span> </div> ' +
+                    '</div> ' +
+                    '</div>' +
+                    '</form> </div>  </div>',
          title: "Edit this comment",
-         value: message,
-         callback: function(message) {
-            if (message !== null && message !== ""){
-            $(that).children('p').text(message);   
-            } 
+         buttons: {
+           success: {
+               label: "Accept",
+               className: "btn-success",
+               callback: function() {
+                  message = $('#name').val();
+                  if (message !== null && message !== ""){
+                     $(that).children('p').text(message);   
+                  } 
+               }
+            },
+            danger: {
+               label: "Delete",
+               className: "btn-danger",
+               callback: function() {
+                  that.remove();
+               }
+            },
+            
          }
       });
    });
 
 
    // ----------- Delete Posts -----------
-   $(document).on("contextmenu", ".post",function(e){
-      e.preventDefault();
-      that = this;
-      bootbox.confirm("Are you sure you want to delete this post?", function(result) { 
-         if (result) {
-            that.remove();
-         }
-      });
+   // $(document).on("contextmenu", ".post",function(e){
+   //    e.preventDefault();
+   //    that = this;
+   //    bootbox.confirm("Are you sure you want to delete this post?", function(result) { 
+   //       if (result) {
+   //          that.remove();
+   //       }
+   //    });
       
-   });
+   // });
 
 // ----------- Delete all Posts -----------
    $(document).on("click", ".delete-com", function(e){
