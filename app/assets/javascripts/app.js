@@ -4,23 +4,48 @@ $(document).ready(function() {
    $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
       var y = e.pageY + 'px';
-      var name = $('<p class="label label-success" > Camilo </p>'); 
-      var div = $('<div class="post ">').css({
-         "position": "absolute",
-         "left": x,
-         "top": y
-      });
-      console.log(div[0]);
-      div.append(name);
-      $(document.body).append(div);
+      bootbox.prompt("Please enter your comment?", function(message) {                
+         if (message !== null && message !== ""){
+            // var name = $('<span class="edit" >Type here!</span>');
+            var name = $('<p class="label label-success">' + message + '</p>'); 
+            var div = $('<div class="post" >').css({
+            "position": "absolute",
+            "left": x,
+            "top": y
+            });
+            console.log(div[0]);
+            div.append(name);
+            $(document.body).append(div);   
+         }
+      });      
    });
 
-// ----------- Delete Posts -----------
+// ----------- Edit Posts -----------
    $(document).on("dblclick", ".post",function(){
-      var a = confirm("Do you want to delete this post?");
-      if (a) {
-         this.remove();
-      }
+      var message = $(this).children('p').text();
+      var that = this;
+      bootbox.prompt({
+         title: "Edit this comment",
+         value: message,
+         callback: function(message) {
+            if (message !== null && message !== ""){
+            $(that).children('p').text(message);   
+            } 
+         }
+      });
+   });
+
+
+   // ----------- Delete Posts -----------
+   $(document).on("contextmenu", ".post",function(e){
+      e.preventDefault();
+      that = this;
+      bootbox.confirm("Are you sure you want to delete this post?", function(result) { 
+         if (result) {
+            that.remove();
+         }
+      });
+      
    });
 
 // ----------- Delete all Posts -----------
@@ -29,11 +54,12 @@ $(document).ready(function() {
       $(".post").remove();
    });
    
-         
+  
+
 // ----------- Dragg Posts -----------
    var $dragging = null;
 
-    $(document.body).on("mousemove", function(e) {
+    $(document).on("mousemove", function(e) {
         if ($dragging) {
             $dragging.offset({
                 top: e.pageY,
@@ -42,11 +68,14 @@ $(document).ready(function() {
         }
     });
 
-    $(document.body).on("mousedown", ".post", function (e) {
-        $dragging = $(e.target);
+    $(document).on("mousedown", ".post", function (e) {
+        e.preventDefault();
+        $dragging = $(e.target);  
+        
     });
 
-    $(document.body).on("mouseup", function (e) {
+    $(document).on("mouseup", function (e) {
+         e.preventDefault();
         $dragging = null;
     });
 
@@ -55,7 +84,7 @@ $(document).ready(function() {
     var session = $('.sess_information').data('session');
     // alert(a.name);
 
-    $('.save-com').on("click", function (e){
+    $(document).on("click",'.save-com', function (e){
          e.preventDefault();
          var allPosts = $('.post');
          console.log(allPosts);
@@ -66,7 +95,19 @@ $(document).ready(function() {
          });
     });
     
+    // test------------------------------
 
+    // setting defaults for the editable
+// $.fn.editable.defaults.mode = 'inline';
+// $.fn.editable.defaults.emptytext = 'Empty';
+// $.fn.editable.defaults.type = 'textarea';
 
+// $('.edit').editable({
+//         url: '/post',
+//         title: 'Enter comments',
+//         rows: 4,
+//         inputclass: "input-large"
+//     });
+ 
 
  });
