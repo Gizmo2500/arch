@@ -1,5 +1,6 @@
 $(document).ready(function() { 
 
+
 // ----------- Adds Posts -----------
    $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
@@ -105,18 +106,37 @@ $(document).ready(function() {
     });
 
 
-// ----------- (Passing JavaScript variables to Rails) -----------
+// ----------- Testing (Passing Rails variables to Javascript) -----------
     var session = $('.sess_information').data('session');
-    // alert(a.name);
+    var postsRevovered = session.version;
+       if (postsRevovered) {
+            var test = JSON.parse(postsRevovered);
+            for (var f = 0; f < test.length; f++) {
+               $(document.body).append(test[f]);
+            } 
+      } else {
+         alert("No markups");
+       }
+    
+    
+    
 
+    
+// ----------- Testing (Passing Javascript variables to Rails) -----------
     $(document).on("click",'.save-com', function (e){
          e.preventDefault();
-         var allPosts = $('.post');
-         console.log(allPosts);
+         console.log("Save works");
+         var postArray = [];
+         var allPosts = document.getElementsByClassName('post');
+         for (var i = 0; i < allPosts.length; i++) {
+            postArray.push(allPosts[i].outerHTML);
+         }
+         // var pep = JSON.stringify(postArray);
+         console.log("Esto es postArray; ",postArray);
          $.ajax ({
             url : "/sessions/"+ session.id,
             type : "post",
-            data : {data_value: JSON.stringify(allPosts)}
+            data : {data_value: JSON.stringify(postArray)}
 
          });
     });

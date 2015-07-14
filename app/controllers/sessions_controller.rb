@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     
     posts = params[:data_value]
     if posts
-      a = JSON.parse posts
+      a = posts
       @session.version = a
       @session.save
     else
