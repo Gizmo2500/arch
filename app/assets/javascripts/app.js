@@ -4,7 +4,7 @@ $(document).ready(function() {
    $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
       var y = e.pageY + 'px';
-      bootbox.prompt("Please enter your comment?", function(message) {                
+      bootbox.prompt("Add Post", function(message) {                
          if (message !== null && message !== ""){
             // var name = $('<span class="edit" >Type here!</span>');
             var name = $('<p class="label label-success">' + message + '</p>'); 
@@ -29,14 +29,14 @@ $(document).ready(function() {
                     '<div class="col-md-12"> ' +
                     '<form class="form-horizontal"> ' +
                     '<div class="form-group"> ' +
-                    '<label class="col-md-2 control-label" for="name">Current comment</label> ' +
+                    '<label class="col-md-2 control-label" for="name">Current Post</label> ' +
                     '<div class="col-md-9"> ' +
                     '<input id="name" name="name" type="text" placeholder="'+ message1+'" class="form-control input-md"> ' +
                     '<span class="help-block">Click on Accept button!</span> </div> ' +
                     '</div> ' +
                     '</div>' +
                     '</form> </div>  </div>',
-         title: "Edit this comment",
+         title: "Edit this Post",
          buttons: {
            success: {
                label: "Accept",
@@ -105,7 +105,7 @@ $(document).ready(function() {
     });
 
 
-// ----------- Testing (Passing Rails variables to Javascript) -----------
+// ----------- (Passing JavaScript variables to Rails) -----------
     var session = $('.sess_information').data('session');
     // alert(a.name);
 
@@ -117,6 +117,7 @@ $(document).ready(function() {
             url : "/sessions/"+ session.id,
             type : "post",
             data : {data_value: JSON.stringify(allPosts)}
+
          });
     });
     

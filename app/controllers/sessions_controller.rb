@@ -21,14 +21,20 @@ class SessionsController < ApplicationController
   end
 
   def update
-    @posts = params[:data_value]
-    # binding.pry
     @session = Session.find params[:id]
-    @session.update_attributes session_params 
-    if @session.save
-      redirect_to sessions_path
+    
+    posts = params[:data_value]
+    if posts
+      a = JSON.parse posts
+      @session.version = a
+      @session.save
     else
-      render :edit
+      @session.update_attributes session_params 
+      if @session.save
+        redirect_to sessions_path
+      else
+       render :edit
+      end
     end
   end
 
