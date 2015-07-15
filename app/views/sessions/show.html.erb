@@ -1,7 +1,8 @@
 <div class="container">
 <h1><%=  @session.name %></h1>
-
-
+<%   if @last_post %>
+   <%= @last_post.id %> 
+   <% end %>
    <div class="table-responsive">
       <table class="table table-bordered">
          <thead>
@@ -31,7 +32,16 @@
       <div class="col-md-10"><p class="image"><%= image_tag @session.image.url , class: "img-responsive" %></p></div>
       <div class="col-md-2">
          <div class="chat">Chat</div>
-         <div class="logo">Annotations</div>
+         <div class="logo">Annotations
+            <% @posts.each do |post| %>
+            <li><%=  @user.email %>: <%=  post.title %></li>
+               <%= form_for post do |f| %>
+                  Com<%= f.text_field :comments %>
+               <% end %>
+            <% end %>
+
+
+         </div>
       </div>
    </div>
 </div>
@@ -47,10 +57,6 @@
 <%= link_to "Save", sessions_path , :class => :"btn btn-warning save-com" %>
 
 
-<%= content_tag :div, class: "session_info", data: {session: @session} do %>
-<% end %>
-<%= content_tag :div, class: "posts_info", data: {posts: @posts} do %>
+<%= content_tag :div, class: "session_info", data: {session: @session, posts: @posts, lastpost: @last_post,user: @user} do %>
 <% end %>
 
-<%= content_tag :div, class: "user_info", data: {user: @user} do %>
-<% end %>

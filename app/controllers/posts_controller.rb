@@ -13,24 +13,26 @@ class PostsController < ApplicationController
   end
 
   def update
-   post = params[:data_value]
-   a = JSON.parse post
-   id = a["id"].to_i
-   @post = Post.find(id)
-    if a["title"]
-      @post.title = a["title"]
-      @post.save
+    if  params[:data_value]
+       post = params[:data_value]
+       a = JSON.parse post
+       id = a["id"].to_i
+       @post = Post.find(id)
+        if a["title"]
+          @post.title = a["title"]
+          @post.save
+        else
+          @post.coordY = (a["coordY"].to_i + @post.coordY.to_i).to_s 
+          @post.coordX = (a["coordX"].to_i + @post.coordX.to_i).to_s 
+          @post.coordY = @post.coordY + "px"
+          @post.coordX = @post.coordX + "px"
+          @post.save
+        end
     else
-      # newY = a["coordY"].to_i
-      # newX = a["coordX"].to_i 
-      # y = @post.coordY.to_i
-      # x = @post.coordX.to_i
-      @post.coordY = (a["coordY"].to_i + @post.coordY.to_i).to_s 
-      @post.coordX = (a["coordX"].to_i + @post.coordX.to_i).to_s 
-      @post.coordY = @post.coordY + "px"
-      @post.coordX = @post.coordX + "px"
-      # binding.pry
-      @post.save
+        @post = Post.find params[:id]
+        @post.comments = params[:post]["comments"]
+        @post.save
+        redirect_to(:back)
     end
   end
 

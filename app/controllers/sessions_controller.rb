@@ -41,7 +41,9 @@ class SessionsController < ApplicationController
   def show
       @session = Session.find params[:id]
       @user = current_user
-      @posts = @session.posts
+      @posts = @session.posts.order('created_at DESC')
+      @last_post = Post.last
+      # binding.pry
   end
 
   def destroy
