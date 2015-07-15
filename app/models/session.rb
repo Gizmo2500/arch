@@ -4,4 +4,6 @@ class Session < ActiveRecord::Base
    validates_attachment :image, :size => { :in => 0..500.kilobytes }
    validates_attachment :image, :content_type => { :content_type => "image/png" }
 
+   has_many :meetings
+   has_many :users, :through => :meetings
 end
