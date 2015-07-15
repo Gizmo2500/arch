@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
   def show
       @session = Session.find params[:id]
       @user = current_user
+      @posts = @session.posts
   end
 
   def destroy

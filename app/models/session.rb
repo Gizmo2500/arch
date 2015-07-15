@@ -1,5 +1,5 @@
 class Session < ActiveRecord::Base
-   has_many :posts
+   has_many :posts, dependent: :destroy
    has_attached_file :image, styles: {small: "64x64", med: "100x100", large: "200x200"}
    validates :image, :attachment_presence => true
    validates_attachment :image, :size => { :in => 0..500.kilobytes }
