@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def index
       @sessions = Session.all
+      @user = current_user
   end
 
   def new
@@ -25,8 +26,7 @@ class SessionsController < ApplicationController
     
     posts = params[:data_value]
     if posts
-      a = posts
-      @session.version = a
+      @session.version = posts
       @session.save
     else
       @session.update_attributes session_params 
@@ -40,6 +40,7 @@ class SessionsController < ApplicationController
 
   def show
       @session = Session.find params[:id]
+      @user = current_user
   end
 
   def destroy

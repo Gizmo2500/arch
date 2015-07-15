@@ -1,5 +1,8 @@
 $(document).ready(function() { 
 
+// --------------- User from Rails to JS ---------------
+    var user = $('.user_info').data('user');
+    console.log(user.email);
 
 // ----------- Adds Posts -----------
    $(document).on("click",".image",function(e){
@@ -8,7 +11,7 @@ $(document).ready(function() {
       bootbox.prompt("Add Post", function(message) {                
          if (message !== null && message !== ""){
             // var name = $('<span class="edit" >Type here!</span>');
-            var name = $('<p class="label label-success">' + message + '</p>'); 
+            var name = $('<p class="label label-success">User: ' + user.email +' Post: ' + message + '</p>'); 
             var div = $('<div class="post" >').css({
             "position": "absolute",
             "left": x,
@@ -106,8 +109,8 @@ $(document).ready(function() {
     });
 
 
-// ----------- Testing (Passing Rails variables to Javascript) -----------
-    var session = $('.sess_information').data('session');
+// ----------- Posts (Passing Rails variables to Javascript) -----------
+    var session = $('.session_info').data('session');
     var postsRevovered = session.version;
        if (postsRevovered) {
             var test = JSON.parse(postsRevovered);
@@ -115,14 +118,12 @@ $(document).ready(function() {
                $(document.body).append(test[f]);
             } 
       } else {
-         alert("No markups");
+         bootbox.alert("No posts registered", function(message) { 
+         });
        }
-    
-    
-    
 
     
-// ----------- Testing (Passing Javascript variables to Rails) -----------
+// ----------- Posts (Passing Javascript variables to Rails) -----------
     $(document).on("click",'.save-com', function (e){
          e.preventDefault();
          console.log("Save works");
@@ -141,19 +142,7 @@ $(document).ready(function() {
          });
     });
     
-    // test------------------------------
-
-    // setting defaults for the editable
-// $.fn.editable.defaults.mode = 'inline';
-// $.fn.editable.defaults.emptytext = 'Empty';
-// $.fn.editable.defaults.type = 'textarea';
-
-// $('.edit').editable({
-//         url: '/post',
-//         title: 'Enter comments',
-//         rows: 4,
-//         inputclass: "input-large"
-//     });
+ 
  
 
  });
