@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   def index
-      @sessions = Session.all
+      @sessions = Session.all.order('created_at DESC')
       @user = current_user
+      @session = Session.new
   end
 
   def new
-      @session = Session.new
   end
 
   def create
@@ -43,7 +43,6 @@ class SessionsController < ApplicationController
       @user = current_user
       @posts = @session.posts.order('created_at DESC')
       @last_post = Post.last
-      # binding.pry
   end
 
   def destroy
