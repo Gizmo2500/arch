@@ -41,7 +41,7 @@ $(document).ready(function() {
    }
 
    function displayPost (completePost) {
-      var name = $('<p class="label label-success" id="'+ completePost.id +'">User: ' + completePost.creator +' || Post: ' + completePost.title + '</p>'); 
+      var name = $('<p class="label label-success" id="'+ completePost.id +'">User: ' + completePost.creator + '</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
          "left": completePost.coordX,
@@ -96,7 +96,7 @@ $(document).ready(function() {
                   if (message !== null && message !== ""){
                      completePost = { title: message, id: id};
                      editPostToDB(completePost);
-                     
+
                      $(that).children('p').text(message);   
                   } 
                }
