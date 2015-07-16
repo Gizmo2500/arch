@@ -1,50 +1,64 @@
 <div class="container">
-<h1><%=  @session.name %></h1>
-<%   if @last_post %>
-   <%= @last_post.id %> 
-   <% end %>
-   <div class="table-responsive">
-      <table class="table table-bordered">
-         <thead>
-         <tr class="info">
-            <th>Admin</th>
-            <th>Description</th>
-            <th>Session Date</th>
-            <th>File Name</th>
-            <th>File Size</th>
-         </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td><%= @user.email %></td>
-               <td><%=  @session.description %></td>
-               <td><%=  @session.date %></td>
-               <td><%=  @session.image_file_name %></td>
-               <td><%=  @session.image_file_size %></td>
-            </tr>
-         </tbody> 
-      </table>
-   </div>
-
 
 
    <div class="row">
-      <div class="col-md-10"><p class="image"><%= image_tag @session.image.url , class: "img-responsive" %></p></div>
+      <div class="col-md-10">
+         <p class="image"><%= image_tag @session.image.url , class: "img-responsive" %></p>
+      </div>
+      
       <div class="col-md-2">
-         <div class="chat">Chat</div>
-         <div class="logo">Annotations
-            <% @posts.each do |post| %>
-            <li><%=  @user.email %>: <%=  post.title %></li>
-               <%= form_for post do |f| %>
-                  Com<%= f.text_field :comments %>
-               <% end %>
-            <% end %>
+      <div class="well well-sm"><b>Session: </b> <%=  @session.name %>
+         
+         <%=form_for @session, html: { multipart: true } do |f|  %>
+            <p><%= f.file_field :image %></p>
+         <% end %>
+      
+      </div>
+         
+
+         <div class="chat well well-sm">
+            
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Chat</h3>
+              </div>
+              <div class="panel-body">
+                <ol>
+                     <li>Label 1</li>   
+                     <li>Label 2</li>
+                     <li>Label 3</li>
+                </ol>
+              </div>
+            </div>            
+
+
+
+         </div>
+
+         <div class="logo well well-sm">
+         
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Annotations</h3>
+              </div>
+              <div class="panel-body">
+                  <% @posts.each do |post| %>
+                     <li><%=  @user.email %>: <%=  post.title %></li>
+                     <%= form_for post do |f| %>
+                        <%= f.text_field :comments %>
+                     <% end %>
+                  <% end %>                  
+              </div>
+            </div>           
+
+            
 
 
          </div>
       </div>
    </div>
-</div>
+
+</div> <!-- Closes container -->
 
 
 
@@ -60,3 +74,8 @@
 <%= content_tag :div, class: "session_info", data: {session: @session, posts: @posts, lastpost: @last_post,user: @user} do %>
 <% end %>
 
+  <div><%= @user.email %></div>
+               <p><%=  @session.description %></p>
+               <p><%=  @session.date %></p>
+               <p><%=  @session.image_file_name %></p>
+               <p><%=  @session.image_file_size %></p>

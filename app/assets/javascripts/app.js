@@ -1,20 +1,15 @@
 $(document).ready(function() { 
-
+      
 // ----------- Posts - User - Session (Passing Rails variables to Javascript) -----------
     var user = $('.session_info').data('user');
     var session = $('.session_info').data('session');
     var posts = $('.session_info').data('posts'); 
     var lastPost = $('.session_info').data('lastpost');
-    var nextId, lastpost;
-    console.log("lastpost ",lastpost);
-
-    if (posts.length > 0) {
+    console.log("user: ", user);
+    if (posts && posts.length > 0) {
          for (var i = 0; i < posts.length; i++) {
             displayPost(posts[i]);
-         }
-    // }else{
-    //      nextId = lastPost.id + 1;
-    //      console.log("nextId ",nextId);      
+         } 
     }    
 
 
@@ -25,17 +20,15 @@ $(document).ready(function() {
       var y = e.pageY + 'px';
       bootbox.prompt("Add Post", function(message) {                
          if (message !== null && message !== ""){
-            // var name = $('<span class="edit" >Type here!</span>');
             completePost = createPostHash(message,x,y);
             createPostToDB(completePost); 
-            lastPost = $('.session_info').data('lastpost');
-            
-                         
+            // lastPost = $('.session_info').data('lastpost');
          }
       });      
    });
 
    function createPostHash(message,x,y) {
+      console.log("User:", user.email);
       var completePost = {
                creator: user.email,
                coordX: x,
@@ -48,20 +41,6 @@ $(document).ready(function() {
    }
 
    function displayPost (completePost) {
-        $.ajax ({
-            url : "/sessions/"+ session.id ,
-            type : "get"
-            
-         });
-
-      lastPost = $('.session_info').data('lastpost');
-      console.log("lastpost 4: ", lastPost); 
-
-
-      if (completePost.id === undefined) {
-         completePost.id = lastpost;
-         // console.log("reached: ", completePost.id);
-      }
       var name = $('<p class="label label-success" id="'+ completePost.id +'">User: ' + completePost.creator +' || Post: ' + completePost.title + '</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
@@ -77,17 +56,9 @@ $(document).ready(function() {
             url : "/sessions/"+  completePost.id + "/posts",
             type : "post",
             data : {data_value: JSON.stringify(completePost)},
-
          });
-      $.ajax ({
-            url : "/sessions/"+ session.id ,
-            type : "get"
-            
-         });
-
-      lastPost = $('.session_info').data('lastpost');
-      console.log("lastpost 2: ", lastPost);
       displayPost(completePost);
+      location.reload(true);
    }
 
       function editPostToDB(completePost) {      
@@ -125,6 +96,7 @@ $(document).ready(function() {
                   if (message !== null && message !== ""){
                      completePost = { title: message, id: id};
                      editPostToDB(completePost);
+                     
                      $(that).children('p').text(message);   
                   } 
                }
@@ -231,17 +203,6 @@ $(document).ready(function() {
          //    data : {data_value: JSON.stringify(postArray)}
 
          // });
-            e.preventDefault();
-             $.ajax ({
-               url : "/sessions/"+ session.id ,
-               type : "get",
-               
-
-            
-            });
-
-      lastPost = $('.session_info').data('lastpost');
-      console.log("lastpost 3: ", lastPost);
 
     });
     
