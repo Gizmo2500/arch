@@ -1,6 +1,24 @@
 $(document).ready(function() { 
 
+// ----------- Posts - User - Session (Passing Rails variables to Javascript) -----------
+    var user = $('.session_info').data('user');
+    var session = $('.session_info').data('session');
+    var posts = $('.session_info').data('posts'); 
+    var lastPost = $('.session_info').data('lastpost');
+    var nextId, lastpost;
+    console.log("lastpost ",lastpost);
 
+    if (posts.length > 0) {
+         for (var i = 0; i < posts.length; i++) {
+            displayPost(posts[i]);
+         }
+    // }else{
+    //      nextId = lastPost.id + 1;
+    //      console.log("nextId ",nextId);      
+    }    
+
+
+    
 // ----------- Adds Posts -----------
    $(document).on("click",".image",function(e){
       var x = e.pageX + 'px';
@@ -8,22 +26,82 @@ $(document).ready(function() {
       bootbox.prompt("Add Post", function(message) {                
          if (message !== null && message !== ""){
             // var name = $('<span class="edit" >Type here!</span>');
-            var name = $('<p class="label label-success">' + message + '</p>'); 
-            var div = $('<div class="post" >').css({
-            "position": "absolute",
-            "left": x,
-            "top": y
-            });
-            console.log(div[0]);
-            div.append(name);
-            $(document.body).append(div);   
+            completePost = createPostHash(message,x,y);
+            createPostToDB(completePost); 
+            lastPost = $('.session_info').data('lastpost');
+            
+                         
          }
       });      
    });
 
+   function createPostHash(message,x,y) {
+      var completePost = {
+               creator: user.email,
+               coordX: x,
+               coordY: y,
+               title: message,
+               session_id: session.id,
+               user_id: user.id
+            };
+      return completePost;
+   }
+
+   function displayPost (completePost) {
+        $.ajax ({
+            url : "/sessions/"+ session.id ,
+            type : "get"
+            
+         });
+
+      lastPost = $('.session_info').data('lastpost');
+      console.log("lastpost 4: ", lastPost); 
+
+
+      if (completePost.id === undefined) {
+         completePost.id = lastpost;
+         // console.log("reached: ", completePost.id);
+      }
+      var name = $('<p class="label label-success" id="'+ completePost.id +'">User: ' + completePost.creator +' || Post: ' + completePost.title + '</p>'); 
+      var div = $('<div class="post" >').css({
+         "position": "absolute",
+         "left": completePost.coordX,
+         "top": completePost.coordY
+      });
+      div.append(name);
+      $(document.body).append(div);       
+   }
+
+   function createPostToDB(completePost) {
+      $.ajax ({
+            url : "/sessions/"+  completePost.id + "/posts",
+            type : "post",
+            data : {data_value: JSON.stringify(completePost)},
+
+         });
+      $.ajax ({
+            url : "/sessions/"+ session.id ,
+            type : "get"
+            
+         });
+
+      lastPost = $('.session_info').data('lastpost');
+      console.log("lastpost 2: ", lastPost);
+      displayPost(completePost);
+   }
+
+      function editPostToDB(completePost) {      
+      $.ajax ({
+            url : "/posts/" + completePost.id,
+            type : "patch",
+            data : {data_value: JSON.stringify(completePost)}
+         });
+   }
+
 // ----------- Edit Posts -----------
    $(document).on("dblclick", ".post",function(){
-      var message1 = $(this).children('p').text();
+      var previousMessage = $(this).children('p').text();
+      var id = $(this).children('p')[0].id;
       var that = this;
       bootbox.dialog({
          message: '<div class="row">  ' +
@@ -32,7 +110,7 @@ $(document).ready(function() {
                     '<div class="form-group"> ' +
                     '<label class="col-md-2 control-label" for="name">Current Post</label> ' +
                     '<div class="col-md-9"> ' +
-                    '<input id="name" name="name" type="text" placeholder="'+ message1+'" class="form-control input-md"> ' +
+                    '<input id="name" name="name" type="text" placeholder="'+ previousMessage+'" class="form-control input-md"> ' +
                     '<span class="help-block">Click on Accept button!</span> </div> ' +
                     '</div> ' +
                     '</div>' +
@@ -45,6 +123,8 @@ $(document).ready(function() {
                callback: function() {
                   message = $('#name').val();
                   if (message !== null && message !== ""){
+                     completePost = { title: message, id: id};
+                     editPostToDB(completePost);
                      $(that).children('p').text(message);   
                   } 
                }
@@ -92,68 +172,80 @@ $(document).ready(function() {
                 left: e.pageX
             });
         }
+        activateMouseup();
     });
 
     $(document).on("mousedown", ".post", function (e) {
         e.preventDefault();
-        $dragging = $(e.target);  
-        
+        $dragging = $(e.target); 
     });
 
-    $(document).on("mouseup", function (e) {
-         e.preventDefault();
-        $dragging = null;
-    });
+   function activateMouseup(){
+       $(document).on("mouseup", function (e) {
+            e.preventDefault();
+            if ($dragging !== null) {
+               // Creates data to edit DB
+              var offsetLeft = $dragging[0].style.left;
+              var offsetTop =  $dragging[0].style.top;
+              var id = $dragging[0].id;
+              completePost = { id: id, coordY: offsetTop, coordX: offsetLeft};
+              editPostToDB(completePost);
+            }
+           
+           $dragging = null;
+
+       });
+   }
 
 
-// ----------- Testing (Passing Rails variables to Javascript) -----------
-    var session = $('.sess_information').data('session');
-    var postsRevovered = session.version;
-       if (postsRevovered) {
-            var test = JSON.parse(postsRevovered);
-            for (var f = 0; f < test.length; f++) {
-               $(document.body).append(test[f]);
-            } 
-      } else {
-         alert("No markups");
-       }
-    
-    
     
 
+
+
+
+
+    // var postsRevovered = session.version;
+    //    if (postsRevovered) {
+    //         var test = JSON.parse(postsRevovered);
+    //         for (var f = 0; f < test.length; f++) {
+    //            $(document.body).append(test[f]);
+    //         } 
+    //   } else {
+    //      bootbox.alert("No posts registered", function(message) { 
+    //      });
+    //    }
+
     
-// ----------- Testing (Passing Javascript variables to Rails) -----------
+// ----------- Posts (Passing Javascript variables to Rails) -----------
     $(document).on("click",'.save-com', function (e){
-         e.preventDefault();
-         console.log("Save works");
-         var postArray = [];
-         var allPosts = document.getElementsByClassName('post');
-         for (var i = 0; i < allPosts.length; i++) {
-            postArray.push(allPosts[i].outerHTML);
-         }
-         // var pep = JSON.stringify(postArray);
-         console.log("Esto es postArray; ",postArray);
-         $.ajax ({
-            url : "/sessions/"+ session.id,
-            type : "post",
-            data : {data_value: JSON.stringify(postArray)}
+         // e.preventDefault();
+         // var postArray = [];
+         // var allPosts = document.getElementsByClassName('post');
+         // for (var i = 0; i < allPosts.length; i++) {
+         //    postArray.push(allPosts[i].outerHTML);
+         // }
+         // // var pep = JSON.stringify(postArray);
+         // $.ajax ({
+         //    url : "/sessions/"+ session.id,
+         //    type : "post",
+         //    data : {data_value: JSON.stringify(postArray)}
 
-         });
+         // });
+            e.preventDefault();
+             $.ajax ({
+               url : "/sessions/"+ session.id ,
+               type : "get",
+               
+
+            
+            });
+
+      lastPost = $('.session_info').data('lastpost');
+      console.log("lastpost 3: ", lastPost);
+
     });
     
-    // test------------------------------
-
-    // setting defaults for the editable
-// $.fn.editable.defaults.mode = 'inline';
-// $.fn.editable.defaults.emptytext = 'Empty';
-// $.fn.editable.defaults.type = 'textarea';
-
-// $('.edit').editable({
-//         url: '/post',
-//         title: 'Enter comments',
-//         rows: 4,
-//         inputclass: "input-large"
-//     });
+ 
  
 
  });

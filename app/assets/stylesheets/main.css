@@ -1,4 +1,21 @@
 .post {
-   color: red;
-   
+   color: red;   
+}
+
+.chat {
+   width: 230px;
+   height: 160px;
+   border: 1px solid black;
+
+}
+
+.logo {
+   width: 230px;
+   height: 160px;
+   border: 1px solid black;
+}
+
+.image {
+   width: auto;
+   height: auto;
 }
