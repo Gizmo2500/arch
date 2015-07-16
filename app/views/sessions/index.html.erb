@@ -4,11 +4,13 @@
       
       <div class="col-md-5 jumbotron">
                   
-         <% if @session.errors.any? %>
-            <% @session.errors.full_messages.each do |error|%>
-            <p class="text-danger"><%= error%></p>
-            <% end %>
-         <% end %>
+          <% if @session.errors.any? %>
+             <% @session.errors.full_messages.each do |error|%>
+             <p class="text-danger">
+                <%= error%>
+             </p>
+             <% end %>
+          <% end %>         
            
             
          <%=form_for @session, html: { multipart: true } do |f|  %>
@@ -17,9 +19,8 @@
             <p><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></p>   
              <p><b> Invite</b> <textarea class="form-control" rows="3" cols="25" placeholder="Enter email addresses here..."></textarea></p>
             <p><%= f.label "Date:" %>  <%= f.text_field :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></p>
-            <p><%= f.file_field :image %></p>
-            
-            <%= f.submit "Go to Session", :class => "btn btn-success"%>
+           
+            <%= f.submit "Create Session", :class => "btn btn-success"%>
          <% end %>
 
          

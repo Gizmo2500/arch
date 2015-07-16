@@ -2,20 +2,23 @@
    color: red;   
 }
 
+.attendees {
+   width: 210px;
+   height: 140px;
+   border: 1px solid black;
+}
+
 .chat {
-   width: 230px;
+   width: 210px;
    height: 160px;
    border: 1px solid black;
 
 }
 
-.logo {
-   width: 230px;
-   height: 360px;
+.log {
+   width: 210px;
+   height: 260px;
    border: 1px solid black;
 }
 
-.image {
-   width: auto;
-   height: auto;
-}
+

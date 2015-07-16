@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if @session.save
          redirect_to sessions_path
       else
-         render :new
+        redirect_to(:back)
       end
   end
 
@@ -23,7 +23,6 @@ class SessionsController < ApplicationController
 
   def update
     @session = Session.find params[:id]
-    
     posts = params[:data_value]
     if posts
       @session.version = posts
@@ -31,7 +30,7 @@ class SessionsController < ApplicationController
     else
       @session.update_attributes session_params 
       if @session.save
-        redirect_to sessions_path
+        redirect_to session_path(@session)
       else
        render :edit
       end
