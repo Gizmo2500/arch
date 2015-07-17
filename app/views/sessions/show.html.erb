@@ -1,81 +1,107 @@
-<div class="container">
 
-
-   <div class="row">
-      <div class="col-md-10">
-         <p class="image"><%= image_tag @session.image.url , class: "img-responsive" %></p>
-      </div>
-      
-      <div class="col-md-2">
-      <div class="well well-sm"><b>Session: </b> <%=  @session.name %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
          
-         <%=form_for @session, html: { multipart: true } do |f|  %>
-            <p><%= f.file_field :image %></p>
-         <% end %>
+<!-- Dropdown Menu -->
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Session Menu
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#"><%= link_to "Sessions Index", sessions_path  %></a></li>
+          <li><a href="#"><%= link_to "Delete All comments", sessions_path %></a></li>
+          
+        </ul>
+      </div>      
+
       
-      </div>
-         
-
-         <div class="chat well well-sm">
-            
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Chat</h3>
-              </div>
-              <div class="panel-body">
-                <ol>
-                     <li>Label 1</li>   
-                     <li>Label 2</li>
-                     <li>Label 3</li>
-                </ol>
-              </div>
-            </div>            
 
 
 
+    </h3>
+  </div>
+  <div class="panel-body">
+    
+<!-- Image -->
+
+   <div class="container">
+      <div class="row">
+         <div class="col-md-10 jumbotron">
+            <% if @session.image_file_name != nil %>
+               <%= image_tag @session.image.url , class: "img-responsive image" %>
+            <% else %>
+               <p>Add an Image</p>
+            <% end %>
          </div>
 
-         <div class="logo well well-sm">
-         
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Annotations</h3>
-              </div>
-              <div class="panel-body">
-                  <% @posts.each do |post| %>
-                     <li><%=  @user.email %>: <%=  post.title %></li>
-                     <%= form_for post do |f| %>
-                        <%= f.text_field :comments %>
-                     <% end %>
-                  <% end %>                  
-              </div>
-            </div>           
+<!-- Attendees -->
 
+         <div class="col-md-2">
+         <div class="attendees well well-sm"><b>Session: </b> <%=  @session.name %>
             
+            <%=form_for @session, html: { multipart: true } do |f|  %>
+               <p><%= f.label "Session topic: " %> <%=  @session.description %></p>   
+               <p><%= f.file_field :image %></p>
+               <%= f.submit "Upload", :class => "btn btn-success"%>
+            <% end %>
+         
+         </div>
+            
+<!-- Chat -->
+            <div class="chat well well-sm">
+               <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h3 class="panel-title">Chat</h3>
+                 </div>
+                 <div class="panel-body">
+                   <ol>
+                        <li>Label 1</li>   
+                        <li>Label 2</li>
+                        <li>Label 3</li>
+                   </ol>
+                 </div>
+               </div>            
+            </div>
+
+<!-- Annotations -->
+
+            <div class="log well well-sm">
+               <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h3 class="panel-title">Annotations</h3>
+                 </div>
+                 <div class="panel-body">
+                     <% @posts.each do |post| %>
+                        <li><%=  @user.email %>: <%=  post.title %></li>
+                        <%= form_for post do |f| %>
+                           <%= f.text_field :comments %>
+                        <% end %>
+                     <% end %>                  
+                 </div>
+               </div>           
+
+               
 
 
+            </div>
          </div>
       </div>
-   </div>
 
-</div> <!-- Closes container -->
-
+   </div> <!-- Closes container -->
 
 
 
+  </div>
+</div>
 
-<hr>
 
-<%= link_to "Index", sessions_path , :class => :"btn btn-primary" %>
-<%= link_to "Delete All comments", sessions_path , :class => :"btn btn-warning delete-com" %>
-<%= link_to "Save", sessions_path , :class => :"btn btn-warning save-com" %>
+
+
 
 
 <%= content_tag :div, class: "session_info", data: {session: @session, posts: @posts, lastpost: @last_post,user: @user} do %>
 <% end %>
 
-  <div><%= @user.email %></div>
-               <p><%=  @session.description %></p>
-               <p><%=  @session.date %></p>
-               <p><%=  @session.image_file_name %></p>
-               <p><%=  @session.image_file_size %></p>

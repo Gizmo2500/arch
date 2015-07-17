@@ -12,7 +12,6 @@ $(document).ready(function() {
          } 
     }    
 
-
     
 // ----------- Adds Posts -----------
    $(document).on("click",".image",function(e){
@@ -22,7 +21,7 @@ $(document).ready(function() {
          if (message !== null && message !== ""){
             completePost = createPostHash(message,x,y);
             createPostToDB(completePost); 
-            // lastPost = $('.session_info').data('lastpost');
+            
          }
       });      
    });
@@ -41,7 +40,8 @@ $(document).ready(function() {
    }
 
    function displayPost (completePost) {
-      var name = $('<p class="label label-success" id="'+ completePost.id +'">User: ' + completePost.creator + '</p>'); 
+      var user = getUserInitials(completePost.creator);
+      var name = $('<p class="label label-success" id="'+ completePost.id +'">' + user + " - " + completePost.title + '</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
          "left": completePost.coordX,
@@ -49,6 +49,11 @@ $(document).ready(function() {
       });
       div.append(name);
       $(document.body).append(div);       
+   }
+
+   function getUserInitials(creator){
+      var user = creator.substring(0,2).toUpperCase();
+      return user;
    }
 
    function createPostToDB(completePost) {
@@ -61,10 +66,18 @@ $(document).ready(function() {
       location.reload(true);
    }
 
-      function editPostToDB(completePost) {      
+   function editPostToDB(completePost) {      
       $.ajax ({
             url : "/posts/" + completePost.id,
             type : "patch",
+            data : {data_value: JSON.stringify(completePost)}
+         });
+   }
+
+   function deletePostToDB(completePost) {      
+      $.ajax ({
+            url : "/posts/" + completePost.id,
+            type : "delete",
             data : {data_value: JSON.stringify(completePost)}
          });
    }
@@ -105,7 +118,8 @@ $(document).ready(function() {
                label: "Delete",
                className: "btn-danger",
                callback: function() {
-                  that.remove();
+                     completePost = {id: id};
+                     deletePostToDB(completePost);
                }
             },
             
@@ -170,22 +184,6 @@ $(document).ready(function() {
    }
 
 
-    
-
-
-
-
-
-    // var postsRevovered = session.version;
-    //    if (postsRevovered) {
-    //         var test = JSON.parse(postsRevovered);
-    //         for (var f = 0; f < test.length; f++) {
-    //            $(document.body).append(test[f]);
-    //         } 
-    //   } else {
-    //      bootbox.alert("No posts registered", function(message) { 
-    //      });
-    //    }
 
     
 // ----------- Posts (Passing Javascript variables to Rails) -----------
@@ -206,7 +204,12 @@ $(document).ready(function() {
 
     });
     
+// ----------------- Calendar (Datepicker) ---------------------------
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });  
  
- 
+ // ----------------- Dropdown Menu (Show Page) ---------------------------
+ $('.dropdown-toggle').dropdown();
 
  });

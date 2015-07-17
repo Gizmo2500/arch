@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if @session.save
          redirect_to sessions_path
       else
-         render :new
+        redirect_to(:back)
       end
   end
 
@@ -23,7 +23,6 @@ class SessionsController < ApplicationController
 
   def update
     @session = Session.find params[:id]
-    
     posts = params[:data_value]
     if posts
       @session.version = posts
@@ -31,7 +30,7 @@ class SessionsController < ApplicationController
     else
       @session.update_attributes session_params 
       if @session.save
-        redirect_to sessions_path
+        redirect_to session_path(@session)
       else
        render :edit
       end
@@ -42,7 +41,6 @@ class SessionsController < ApplicationController
       @session = Session.find params[:id]
       @user = current_user
       @posts = @session.posts.order('created_at DESC')
-      @last_post = Post.last
   end
 
   def destroy
@@ -54,6 +52,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-      params.require(:session).permit(:name, :description, :date, :image_file_name, :image_content_type, :image)
+      params.require(:session).permit(:name, :time,:description, :date, :image_file_name, :image_content_type, :image)
   end
 end
