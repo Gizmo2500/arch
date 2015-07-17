@@ -10,7 +10,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'bootbox-rails', '~>0.4'
 gem 'devise_invitable'
-
+gem 'bootstrap-datepicker-rails'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets

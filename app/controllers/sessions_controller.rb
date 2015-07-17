@@ -41,7 +41,6 @@ class SessionsController < ApplicationController
       @session = Session.find params[:id]
       @user = current_user
       @posts = @session.posts.order('created_at DESC')
-      @last_post = Post.last
   end
 
   def destroy
@@ -53,6 +52,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-      params.require(:session).permit(:name, :description, :date, :image_file_name, :image_content_type, :image)
+      params.require(:session).permit(:name, :time,:description, :date, :image_file_name, :image_content_type, :image)
   end
 end
