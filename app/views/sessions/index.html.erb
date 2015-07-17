@@ -19,7 +19,7 @@
             <p><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></p>   
              <p><b> Invite</b> <textarea class="form-control" rows="3" cols="25" placeholder="Enter email addresses here..."></textarea></p>
             <p><%= f.label "Date:" %>  <%= f.date_select :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></p>
-            <p><%= f.label "Time:" %>  <%= f.text_field :time,:placeholder => "hh:mm", :class =>"form-control" %></p>
+            <p><%= f.label "Time:" %>  <%= f.time_select :time,:placeholder => "hh:mm", :class =>"form-control" %></p>
             <%= f.submit "Create Session", :class => "btn btn-success"%>
          <% end %>
 
@@ -37,6 +37,7 @@
                   <thead>
                      <th>Session</th>
                      <th>Date</th>
+                     <th>time</th>
                      <th>Anttendees</th>
                      <th>Edit</th>
                   </thead>
@@ -45,6 +46,7 @@
                      <tr>
                         <td><%= session.name %></td>
                         <td><%= session.date %></td>
+                        <td><%= session.time.strftime("%I:%M%p")  %></td>
                         <td>
                             <%= @user.email %>
                             <span class="badge">4</span>
