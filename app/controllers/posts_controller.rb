@@ -40,7 +40,7 @@ class PostsController < ApplicationController
       post_id = JSON.parse params[:data_value]
       post = Post.find post_id["id"]
       Post.delete(post)
-      binding.pry
+     
   end
 
 end

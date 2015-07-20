@@ -13,8 +13,8 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
           <li><a href="#"><%= link_to "Sessions Index", sessions_path  %></a></li>
           <li><a href="#"><%= link_to "Delete All comments", sessions_path %></a></li>
-          
         </ul>
+         <button class="btn btn-default pencil" type="button"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
       </div>      
 
       
@@ -30,11 +30,13 @@
    <div class="container">
       <div class="row">
          <div class="col-md-10 jumbotron">
-            <% if @session.image_file_name != nil %>
-               <%= image_tag @session.image.url , class: "img-responsive image" %>
-            <% else %>
-               <p>Add an Image</p>
-            <% end %>
+           <div id="myCanvas" >
+              <% if @session.image_file_name != nil %>
+                 <%= image_tag @session.image.url , class: "img-responsive image" %>
+              <% else %>
+                 <p>Add an Image</p>
+              <% end %>
+            </div>
          </div>
 
 <!-- Attendees -->

@@ -26,3 +26,13 @@
    width: auto;
    height: 25px;
 }
+
+/*----------Show Page----------*/
+
+div.resizable {
+    width: 40px;
+    height: 30px;
+    background: rgba(29,100,200,0.4);
+    padding: 0px;
+
+}
