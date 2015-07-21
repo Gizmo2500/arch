@@ -30,13 +30,13 @@
    <div class="container">
       <div class="row">
          <div class="col-md-10 jumbotron">
-           <div id="myCanvas" >
+              <!-- <canvas class="canva" width="855" height="475"></canvas>  -->
               <% if @session.image_file_name != nil %>
                  <%= image_tag @session.image.url , class: "img-responsive image" %>
               <% else %>
                  <p>Add an Image</p>
               <% end %>
-            </div>
+              
          </div>
 
 <!-- Attendees -->
@@ -98,6 +98,8 @@
 
   </div>
 </div>
+
+
 
 
 
