@@ -1,11 +1,33 @@
 $(document).ready(function() { 
-      
+ 
+
+//-------------------------Add Graphics-------------------------
+$('.pencil').on("click", function(e){
+  $('.col-md-10').append('<div class="draggable resizable"></div>');
+$(".resizable").resizable();
+  
+   
+
+
+  
+  
+
+$(".draggable").draggable({
+    drag: function (event, ui) {
+        ui.helper.children('#field2').blur();
+    }
+});
+
+});
+
+
+
 // ----------- Posts - User - Session (Passing Rails variables to Javascript) -----------
     var user = $('.session_info').data('user');
     var session = $('.session_info').data('session');
     var posts = $('.session_info').data('posts'); 
     var lastPost = $('.session_info').data('lastpost');
-    console.log("user: ", user);
+    // console.log("user: ", user);
     if (posts && posts.length > 0) {
          for (var i = 0; i < posts.length; i++) {
             displayPost(posts[i]);

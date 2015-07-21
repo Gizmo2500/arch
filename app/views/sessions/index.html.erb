@@ -2,8 +2,8 @@
 <div class="container">
    <div class="row">
       
-      <div class="col-md-5 jumbotron">
-                  
+      <div class="col-md-4 jumbotron">
+          <h3>Create a new session</h3>         
           <% if @session.errors.any? %>
              <% @session.errors.full_messages.each do |error|%>
              <p class="text-danger">
@@ -12,14 +12,15 @@
              <% end %>
           <% end %>         
            
-            
+           
+
          <%=form_for @session, html: { multipart: true } do |f|  %>
             
-            <p><%= f.label "Session Name:" %> <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%></p>   
-            <p><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></p>   
-             <p><b> Invite</b> <textarea class="form-control" rows="3" cols="25" placeholder="Enter email addresses here..."></textarea></p>
-            <p><%= f.label "Date:" %>  <%= f.date_select :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></p>
-            <p><%= f.label "Time:" %>  <%= f.time_select :time,:placeholder => "hh:mm", :class =>"form-control" %></p>
+            <h5><%= f.label "Session Name:" %> <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%></h5>   
+            <h5><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></h5>   
+             <h5><b> Invite:</b> <textarea class="form-control" rows="3" cols="25" placeholder="Enter email addresses here..."></textarea></h5>
+            <h5><%= f.label "Date:" %>  <%= f.date_select :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></h5>
+            <h5><%= f.label "Time:" %>  <%= f.time_select :time,:placeholder => "hh:mm", :class =>"form-control" %></h5>
             <%= f.submit "Create Session", :class => "btn btn-success"%>
          <% end %>
 
@@ -27,11 +28,11 @@
 
       </div>
       <!-- <div class="col-md-1"></div> -->
-      <div class="col-md-7">
+      <div class="col-md-8">
          <div class="well">
          <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">List of Sessions</div>
+  <div class="panel-heading">Sessions</div>
           <div class="table-responsive">
                <table class="table ">
                   <thead>
