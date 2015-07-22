@@ -4,8 +4,8 @@
       <div class="panel-heading">
         <h3 class="panel-title">  
 <!-- Dropdown Menu -->
-
-          <li class="menu-li">
+          <%= link_to "Sessions", sessions_path , :class => "btn btn-primary " %>
+          <!-- <li class="menu-li">
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Session Menu
@@ -16,7 +16,7 @@
                 <li><a href="#"><%= link_to "Delete All comments", sessions_path %></a></li>
               </ul>
             </div>      
-          </li>
+          </li> -->
 <!-- Drawing buttons -->
           <li class="menu-li"><button class="btn btn-default post-button" type="button"> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button></li>
           <li class="menu-li"><button class="btn btn-default pencil" type="button"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></li>
@@ -28,6 +28,10 @@
           </li>          
 
           <li class="menu-li"><button class="btn btn-default save-com" type="button"> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button></li>
+          <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+
+          <li class="menu-li show-name"><b>Session: </b><%=  @session.name %></li>
+
         </h3>
 <!-- Image -->
               <!-- <canvas class="canva" width="855" height="475"></canvas>  -->
@@ -37,7 +41,7 @@
                  <p>Add an Image</p>
               <% end %>
             
-
+              
       </div>
     </div>
   </div>
@@ -46,10 +50,12 @@
      <!-- <div class="attendees well well-sm"> -->
       <div class="panel panel-primary scroll-bar chat">
         <div class="panel-heading">
-          <h3 class="panel-title"><b>Session: </b><%=  @session.name %></h3>
+          <h3 class="panel-title">Attendees</h3>
         </div>
-        <div class="panel-body">
-           <p> Session topic: <%=  @session.description %></p>   
+        <div class="panel-body scroll-bar">
+           <div class="show-user"><%= @user.email %> </div> 
+           <div class="show-user" style="background-color: blue; color: white;">Tom Peterson </div>   
+
         </div>
      </div>
             
@@ -59,7 +65,7 @@
            <div class="panel-heading">
              <h3 class="panel-title">Live Chat</h3>
            </div>
-           <div class="panel-body">
+           <div class="panel-body scroll-bar">
              <ul>
                   <li class="chat-mss">Label 1</li>   
                   <li class="chat-mss1">Label 2</li>
@@ -75,11 +81,11 @@
   <!-- Annotations -->
 
             <!-- <div class="log well well-sm"> -->
-        <div class="panel panel-primary scroll-bar log">
+        <div class="panel panel-primary log">
            <div class="panel-heading">
              <h3 class="panel-title">Annotations</h3>
            </div>
-           <div class="panel-body comment-window" >
+           <div class="panel-body scroll-bar comment-window" >
                <% @posts.each do |post| %>
                 <div class="annotation-user"><%= post.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %> - <%=  @user.email %> </div>
                 <div class="annotation-comm"><b> <%=  post.title %> </b><%= post.comments %></div>

@@ -1,11 +1,12 @@
 .post1 {
    color: white;   
    font-size: 10px;
-   padding: 1px 0 0 2px;
-   background-color: #4967F3;
+   padding: 1px 3px 0 3px;
+   background-color: #2B8E26;
    width: 120px;
    height: 17px;
    overflow:hidden;
+   border-radius: 2px;
 }
 
 .attendees {
@@ -36,7 +37,40 @@
    height: 25px;
 }
 
+/*----------Index Page----------*/
+
+.container .row .panel-default>.panel-heading {
+   background-image: linear-gradient(to bottom,#7CB39E 0,#7CB39E 100%);
+   color: white;
+}
+
+.container .panel-default .panel-body .new_session .btn-success{
+   background-image: linear-gradient(to bottom,#7CB39E 0,#4E7F70 100%);
+}
+
+.container .panel-default .panel-body .new_session .btn-success:hover {
+  background-color: #4C7D6E;
+}
+
+.table {
+   font-size: 11px;
+}
+
+.container .panel-default .table .btn-primary{
+   background-image: linear-gradient(to bottom,#64A290 0,#4B796C 100%);
+}
+
+.container .panel-default .table .btn-primary:hover{
+   background-color: #4C7D6E;
+}
+
+.indexBody {
+   background-color: #2A2A2A;
+
+}
 /*----------Show Page----------*/
+
+
 
 div.resizable {
     font-size: 10px;
@@ -86,18 +120,19 @@ div.resizable {
    margin-top: 10px;
 }
 
-/*--------Comments in Show--------*/
-.annotation-user {
-   background-color: gray;
-   color: white;
+/*--------Attendees in Show--------*/
+
+.show-user {
    font-size: 10px;
-   padding: 2px;
+   background-color: #2B8E26;
+   color:white;
+   border-radius: 3px;
+   padding: 2px 0 2px 3px;
+   width: 70%;
+   text-align: center;
+   margin: 2px 0 7px 20px;
 }
 
-.annotation-comm {
-   font-size: 10px;
-   margin-bottom: 4px;
-}
 
 /*--------Chat in Show--------*/
 
@@ -127,6 +162,17 @@ div.resizable {
 }
 
 /*-----------------Comments area----------------*/
+.annotation-user {
+   background-color: gray;
+   color: white;
+   font-size: 10px;
+   padding: 2px;
+}
+
+.annotation-comm {
+   font-size: 10px;
+   margin-bottom: 4px;
+}
 
 .comment-window {
    height: 299px;
@@ -150,7 +196,7 @@ div.resizable {
 }
 
 .panel-primary .panel-body {
-   padding: 0 10px 0 10px;
+   padding: 7px 10px 0 10px;
 }
 
 .col .panel-primary {
@@ -179,7 +225,7 @@ body .panel-primary>.panel-heading {
 /*test*/
 
 body {
-   background: #384047;
+   background: #441C47;
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
   /*text-align: center;*/
