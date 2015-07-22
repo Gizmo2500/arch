@@ -115,7 +115,7 @@ $('.pencil').on("click", function(e){
 
   $(document).on("click", ".post-button", function(){
       activPost = "1";
-      console.log("1", activPost);
+      // console.log("1", activPost);
   });
     
 // ----------- Adds Posts -----------
@@ -208,9 +208,9 @@ $('.pencil').on("click", function(e){
    function displayPost (completePost) {
       var user = getUserInitials(completePost.creator);
       var time = convertTime(completePost.updated_at);
-      console.log("time", time);
+      // console.log("time", time);
       var message = completePost.title.substring(0,20);
-      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + user + " - " + time + " - "+ message +" - "+ completePost.comments +'</p>'); 
+      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + "<b>"+ user + "</b> - " + "<b>" + time + "</b> - "+ message +" - "+ completePost.comments +'</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
          "left": completePost.coordX,
@@ -303,6 +303,7 @@ $('.pencil').on("click", function(e){
                      message = title;
                   } if (commentNew === ""){
                     commentNew = comment;
+                    console.log("comment", comment);
                   }
 
                      completePost = { title: message, id: id, comments: commentNew};
@@ -385,12 +386,17 @@ $('.pencil').on("click", function(e){
     
 // ----------- Posts (Passing Javascript variables to Rails) -----------
     $(document).on("click",'.save-com', function (e){
-         // e.preventDefault();
-         // var postArray = [];
-         // var allPosts = document.getElementsByClassName('post');
-         // for (var i = 0; i < allPosts.length; i++) {
-         //    postArray.push(allPosts[i].outerHTML);
-         // }
+         e.preventDefault();
+         var postArray = [],a;
+         var allShades = document.getElementsByClassName('resizable');
+         for (var i = 0; i < allShades.length; i++) {
+            postArray.push(allShades);
+         }
+         console.log("res: ",allShades);
+         a = JSON.stringify(allShades);
+         console.log("a: ", a);
+         // var b = JSON.parse(postArray); 
+         // console.log("b",b);
          // // var pep = JSON.stringify(postArray);
          // $.ajax ({
          //    url : "/sessions/"+ session.id,

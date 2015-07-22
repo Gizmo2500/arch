@@ -26,6 +26,7 @@
    width: 210px;
    /*height: 360px;*/
    border: 1px solid black;
+
 }
 
 
@@ -129,6 +130,7 @@ div.resizable {
 
 .comment-window {
    height: 299px;
+   padding-top: 20px;
 }
 
 .container .well {
