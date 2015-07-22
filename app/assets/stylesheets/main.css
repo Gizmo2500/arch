@@ -1,7 +1,7 @@
 .post1 {
    color: white;   
    font-size: 10px;
-   padding: 0 0 0 2px;
+   padding: 1px 0 0 2px;
    background-color: #4967F3;
    width: 120px;
    height: 17px;
@@ -24,7 +24,7 @@
 
 .log {
    width: 210px;
-   /*height: 160px;*/
+   /*height: 360px;*/
    border: 1px solid black;
 }
 
@@ -81,6 +81,10 @@ div.resizable {
    padding: 0px;
 }
 
+.image {
+   margin-top: 10px;
+}
+
 /*--------Comments in Show--------*/
 .annotation-user {
    background-color: gray;
@@ -97,13 +101,13 @@ div.resizable {
 /*--------Chat in Show--------*/
 
 .chat-mss {
-   background-color: gray;
+   background-color: #368ECB;
    font-size: 10px;
-   border-radius: 6px;
+   border-radius: 4px;
    text-align: right;
    color: white;
    width: 70%;
-   height: 20px;
+   height: 30px;
    padding: 2px 5px 0 0;
    margin-left: 30px;
    margin-bottom: 2px;
@@ -113,7 +117,7 @@ div.resizable {
 .chat-mss1 {
    background-color: #CFCFCF;
    font-size: 10px;
-   border-radius: 6px;
+   border-radius: 4px;
    width: 70%;
    height: 20px;
    padding: 2px 0 0 5px;
@@ -124,7 +128,7 @@ div.resizable {
 /*-----------------Comments area----------------*/
 
 .comment-window {
-   height: 263px;
+   height: 299px;
 }
 
 .container .well {
@@ -134,18 +138,40 @@ div.resizable {
 
 }
 
-.container .panel {
-   margin-bottom: 0px;
-   border-radius: 0px;
-   
+.container-fluid .col {
+   padding: 0;
 }
 
-.panel-default .panel-body {
+.container-fluid .panel {
+   margin-bottom: 0px;
+   border-radius: 0px;   
+}
+
+.panel-primary .panel-body {
    padding: 0 10px 0 10px;
+}
+
+.col .panel-primary {
+   border-color: #5F7CA0;
 }
 
 .container .jumbotron {
    padding: 10px 2px 10px 2px;
+}
+
+.container .panel-primary .panel-heading {
+   border-radius: 0px;
+   background-image: linear-gradient(to bottom,#5F7CA0 0,#5F7CA0 100%);
+}
+
+.container .panel-primary {
+   border-color: #5F7CA0;
+   border-radius: 0px;
+}
+
+body .panel-primary>.panel-heading {
+   border-radius: 0px;
+   background-image: linear-gradient(to bottom,#5F7CA0 0,#5F7CA0 100%);
 }
 
 /*test*/
