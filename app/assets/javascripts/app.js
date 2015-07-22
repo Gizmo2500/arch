@@ -80,7 +80,7 @@ $(document).ready(function() {
 
 //-------------------------Add Markups-------------------------
 $('.pencil').on("click", function(e){
-  $('.col-md-10').prepend('<div class="draggable resizable"><div id="field2" contentEditable="true">Text here..</div></div>');
+  $('.shade').prepend('<div class="draggable resizable"><div id="field2" contentEditable="true">Text here..</div></div>');
   $(".resizable").resizable();
     
   $('#field2').dblclick(function (e) {

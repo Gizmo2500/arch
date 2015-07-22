@@ -27,10 +27,10 @@
                 <% end %>
           </li>          
         </h3>
-            
+<!-- Image -->
               <!-- <canvas class="canva" width="855" height="475"></canvas>  -->
               <% if @session.image_file_name != nil %>
-                 <%= image_tag @session.image.url , class: "img-responsive image" %>
+                 <p class="shade"><%= image_tag @session.image.url , class: "img-responsive image" %></p>
               <% else %>
                  <p>Add an Image</p>
               <% end %>
