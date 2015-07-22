@@ -9,8 +9,6 @@
    overflow:hidden;
 }
 
-
-
 .attendees {
    width: 210px;
    height: 140px;
@@ -48,7 +46,79 @@ div.resizable {
 
 }
 
+#session_image {
+   padding: 0px;
+   /*margin-right: -20px;*/
+   width: 130px;
+   font-size: 8px;
+}
 
+.menu-li {
+   display: inline-block;
+}
+
+.scroll-bar {
+   overflow: scroll;
+    height: 100%;   
+}
+
+.container-fluid .panel .panel-body .container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.margin-none {
+   margin: 0px;
+}
+
+.padding-none {
+   padding: 0px;
+}
+
+/*--------Comments in Show--------*/
+.annotation-user {
+   background-color: gray;
+   color: white;
+   font-size: 10px;
+   padding: 2px;
+}
+
+.annotation-comm {
+   font-size: 10px;
+   margin-bottom: 4px;
+}
+
+/*--------Chat in Show--------*/
+
+.chat-mss {
+   background-color: gray;
+   font-size: 10px;
+   border-radius: 6px;
+   text-align: right;
+   color: white;
+   width: 70%;
+   height: 20px;
+   padding: 2px 5px 0 0;
+   margin-left: 30px;
+   margin-bottom: 2px;
+
+}
+
+.chat-mss1 {
+   background-color: #CFCFCF;
+   font-size: 10px;
+   border-radius: 6px;
+   width: 70%;
+   height: 20px;
+   padding: 2px 0 0 5px;
+   margin-left: -30px;
+   margin-bottom: 2px;
+}
 
 
 /*test*/
