@@ -75,15 +75,8 @@ $(document).ready(function() {
 //     $canvas.mouseup();
 // });
 
-//--------------
-
-$(document).on("click", '.open', function(){
 
 
-  // location.reload();
-
-  console.log("Cami");
-});
 
 //-------------------------Add Markups-------------------------
 $('.pencil').on("click", function(e){
@@ -106,6 +99,7 @@ $('.pencil').on("click", function(e){
 
 
 // ----------- Posts - User - Session (Passing Rails variables to Javascript) -----------
+    var activPost="0";
     var user = $('.session_info').data('user');
     var session = $('.session_info').data('session');
     var posts = $('.session_info').data('posts'); 
@@ -117,58 +111,69 @@ $('.pencil').on("click", function(e){
          } 
     }    
 
+// ----------- Activate Post -----------
+
+  $(document).on("click", ".post-button", function(){
+      activPost = "1";
+      console.log("1", activPost);
+  });
     
 // ----------- Adds Posts -----------
-   $(document).on("click",".image",function(e){
-      var x = e.pageX + 'px';
-      var y = e.pageY + 'px';
-      // bootbox.prompt("Add Post", function(message) {                
-      //    if (message !== null && message !== ""){
-      //       completePost = createPostHash(message,x,y);
-      //       createPostToDB(completePost); 
-            
-      //    }
-      // });     
+   
+       $(document).on("click",".image",function(e){
+        if (activPost === "1") {
+          var x = e.pageX + 'px';
+          var y = e.pageY + 'px';
+          // bootbox.prompt("Add Post", function(message) {                
+          //    if (message !== null && message !== ""){
+          //       completePost = createPostHash(message,x,y);
+          //       createPostToDB(completePost); 
+                
+          //    }
+          // });     
 
-      bootbox.dialog({
-                title: "Add a Post",
-                message: '<div class="row">  ' +
-                    '<div class="col-md-12"> ' +
-                      '<form class="form-horizontal"> ' +
-                       '<div class="form-group"> ' +
-                         '<label class="col-md-2 control-label" for="name">Title</label> ' +
-                          '<div class="col-md-9"> ' +
-                            '<input id="title" name="title"  class="form-control input-md"> ' +
-                          '</div>'+
-                        '</div>'+
-                        '<div class="form-group"> ' +
-                          '<label class="col-md-2 control-label" for="comment">Comment</label> ' +
-                          '<div class="col-md-9"> ' +
-                            '<input id="comment" name="comment"  class="form-control input-md"> ' +  
-                          '</div> ' +
-                        '</div> ' +
-                    '</form> </div>  </div>',
-                buttons: {
-                    success: {
-                        label: "Save",
-                        className: "btn-success",
-                        callback: function () {
-                            var title = $('#title').val();
-                            var comment = $('#comment').val();
-                            if (title !== null && title !== ""){
-                              completePost = createPostHash(title,comment,x,y);
-                              createPostToDB(completePost); 
+          bootbox.dialog({
+                    title: "Add a Post",
+                    message: '<div class="row">  ' +
+                        '<div class="col-md-12"> ' +
+                          '<form class="form-horizontal"> ' +
+                           '<div class="form-group"> ' +
+                             '<label class="col-md-2 control-label" for="name">Title</label> ' +
+                              '<div class="col-md-9"> ' +
+                                '<input id="title" name="title"  class="form-control input-md"> ' +
+                              '</div>'+
+                            '</div>'+
+                            '<div class="form-group"> ' +
+                              '<label class="col-md-2 control-label" for="comment">Comment</label> ' +
+                              '<div class="col-md-9"> ' +
+                                '<input id="comment" name="comment"  class="form-control input-md"> ' +  
+                              '</div> ' +
+                            '</div> ' +
+                        '</form> </div>  </div>',
+                    buttons: {
+                        success: {
+                            label: "Save",
+                            className: "btn-success",
+                            callback: function () {
+                                var title = $('#title').val();
+                                var comment = $('#comment').val();
+                                if (title !== null && title !== ""){
+                                  completePost = createPostHash(title,comment,x,y);
+                                  createPostToDB(completePost); 
+                                }
+                                
                             }
-                            
                         }
                     }
                 }
+            );
+            
+            activPost = "0";
             }
-        );
 
+        });
+  
 
-
-   });
 
    function createPostHash(message,comment,x,y) {
       var completePost = {
@@ -203,9 +208,8 @@ $('.pencil').on("click", function(e){
    function displayPost (completePost) {
       var user = getUserInitials(completePost.creator);
       var time = convertTime(completePost.updated_at);
-      // var time2 = time.getHours()+":"+time.getMinutes();
-      // console.log(time);
-      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + user + " - " + time+ " - "+completePost.comments +'</p>'); 
+      var message = completePost.title.substring(0,20);
+      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + user + " - " + time + " <br>- "+ message +" - "+ completePost.comments +'</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
          "left": completePost.coordX,
@@ -238,10 +242,10 @@ $('.pencil').on("click", function(e){
             type : "patch",
             data : {data_value: JSON.stringify(completePost)},
             success: function(response, status){
-              console.log("Status:",status);
+              // console.log("Status:",status);
             }
          }).done(function(msg){
-          console.log("status 2", msg);
+          // console.log("status 2", msg);
          });
       if (completePost.coordX !== "") {
         location.reload(true);
@@ -403,5 +407,6 @@ $('.pencil').on("click", function(e){
  
  // ----------------- Dropdown Menu (Show Page) ---------------------------
  $('.dropdown-toggle').dropdown();
+
 
  });

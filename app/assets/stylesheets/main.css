@@ -5,14 +5,14 @@
    background-color: #F0F3F3;
    border: 2px solid #1D329F;
    width: 80px;
-   height: 20px;
+   height: 30px;
    overflow:hidden;
 }
 
 .attendees {
    width: 210px;
-   height: 140px;
-   border: 1px solid black;
+   /*height: 140px;*/
+   border: 1px solid red;
 }
 
 .chat {
@@ -20,13 +20,15 @@
    height: 160px;
    border: 1px solid black;
 
+
 }
 
 .log {
    width: 210px;
-   height: 260px;
+   /*height: 160px;*/
    border: 1px solid black;
 }
+
 
 .img-name {
    background-color: #ABACAE;
@@ -102,7 +104,7 @@ div.resizable {
    text-align: right;
    color: white;
    width: 70%;
-   height: 20px;
+   height: 30px;
    padding: 2px 5px 0 0;
    margin-left: 30px;
    margin-bottom: 2px;
@@ -120,6 +122,32 @@ div.resizable {
    margin-bottom: 2px;
 }
 
+/*-----------------Comments area----------------*/
+
+.comment-window {
+   height: 263px;
+}
+
+.container .well {
+   margin-bottom: 0px;
+   border-radius: 0px;
+   padding: 5px;
+
+}
+
+.container .panel {
+   margin-bottom: 0px;
+   border-radius: 0px;
+   
+}
+
+.panel-default .panel-body {
+   padding: 0 10px 0 10px;
+}
+
+.container .jumbotron {
+   padding: 10px 2px 10px 2px;
+}
 
 /*test*/
 
