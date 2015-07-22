@@ -193,7 +193,7 @@ $('.pencil').on("click", function(e){
       var strTime = a.substring(11);
       var time1 = strTime.substring(0,5);
       time = parseInt(time1) ;
-      if (time < 6) {
+      if (time < 8) {
         time = time + 5;
         time = time + time1.substring(2);
         return time;
@@ -208,8 +208,9 @@ $('.pencil').on("click", function(e){
    function displayPost (completePost) {
       var user = getUserInitials(completePost.creator);
       var time = convertTime(completePost.updated_at);
+      console.log("time", time);
       var message = completePost.title.substring(0,20);
-      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + user + " - " + time + " <br>- "+ message +" - "+ completePost.comments +'</p>'); 
+      var name = $('<p class="post1" id="'+ completePost.id +'" title="'+ completePost.title  +' ">' + user + " - " + time + " - "+ message +" - "+ completePost.comments +'</p>'); 
       var div = $('<div class="post" >').css({
          "position": "absolute",
          "left": completePost.coordX,
