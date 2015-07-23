@@ -101,7 +101,7 @@ $('.pencil').on("click", function(e){
 // ----------- Posts - User - Session (Passing Rails variables to Javascript) -----------
     var activPost="0";
     var user = $('.session_info').data('user');
-    var session = $('.session_info').data('session');
+    var mysession = $('.session_info').data('session');
     var posts = $('.session_info').data('posts'); 
     var lastPost = $('.session_info').data('lastpost');
     // console.log("user: ", user);
@@ -181,7 +181,7 @@ $('.pencil').on("click", function(e){
                coordX: x,
                coordY: y,
                title: message,
-               session_id: session.id,
+               mysession_id: mysession.id,
                user_id: user.id,
                comments: comment
             };
@@ -232,7 +232,7 @@ $('.pencil').on("click", function(e){
 
    function createPostToDB(completePost) {
       $.ajax ({
-            url : "/sessions/"+  completePost.id + "/posts",
+            url : "/mysessions/"+  completePost.id + "/posts",
             type : "post",
             data : {data_value: JSON.stringify(completePost)}
          });
@@ -403,7 +403,7 @@ $('.pencil').on("click", function(e){
          // console.log("b",b);
          // // var pep = JSON.stringify(postArray);
          // $.ajax ({
-         //    url : "/sessions/"+ session.id,
+         //    url : "/mysessions/"+ mysession.id,
          //    type : "post",
          //    data : {data_value: JSON.stringify(postArray)}
 

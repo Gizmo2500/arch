@@ -6,10 +6,10 @@ class PostsController < ApplicationController
   def create
    post = params[:data_value]
    a = JSON.parse post
-   @post = Post.new(creator: a["creator"], title: a["title"], coordX: a["coordX"], coordY: a["coordY"], session_id: a["session_id"], user_id: a["user_id"], comments: a["comments"])
+   @post = Post.new(creator: a["creator"], title: a["title"], coordX: a["coordX"], coordY: a["coordY"], mysession_id: a["mysession_id"], user_id: a["user_id"], comments: a["comments"])
    @post.save
-   @session = Session.find(a["session_id"])
-   @session.push(@post)
+   @mysession = Mysession.find(a["session_id"])
+   @mysession.push(@post)
    respond_to do |format|
       format.json {head :ok}
     end

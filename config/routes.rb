@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
 
 
+  
+
   # get 'posts/edit'
   # get 'posts/index'
   # get 'posts/new'
-
-  root 'sessions#index'
-  resources :sessions do
+  devise_for :users
+  
+  root 'mysessions#index'
+  
+  resources :mysessions do
     resources :posts, shallow: true
   end
-  devise_for :users
+  
   # Updates all the posts in the session
-  post 'sessions/:id' => 'sessions#update', as: :updateposts
+  # post 'sessions/:id' => 'sessions#update', as: :updateposts
   
 
   # The priority is based upon order of creation: first created -> highest priority.

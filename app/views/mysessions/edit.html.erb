@@ -1,0 +1,40 @@
+
+<% if @mysession.errors.any? %>
+   <% @mysession.errors.full_messages.each do |error|%>
+   <p cl=ass="text-danger"><%= error%></p>
+   <% end %>
+<% end %>
+  <br>
+<div class="container">
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-5">
+      <div class="panel panel-primary">
+         <div class="panel-heading">
+            <h3 class="panel-title">Edit Session</h3>
+         </div>
+         <div class="panel-body"> 
+            
+               <div class="form-group">
+               
+                  <%=form_for @mysession, html: { multipart: true } do |f|  %>
+                     <br>
+                     <p><%= f.label :name %>        <%= f.text_field :name %></p>   
+                     <p><%= f.label :description %> <%= f.text_area :description %></p>   
+                     <p><%= f.label :date %>        <%= f.text_field :date %></p>
+                     <p><%= f.label :time %>        <%= f.text_field :time %></p>
+                     <p><%= f.label :image %>       <%=  @mysession.image_file_name %></p>
+                     <hr>
+                     <%= f.submit "Update Session", :class => :"btn btn-primary" %>
+                     <%= link_to "Back", mysessions_path , :class => :"btn btn-default"%>      
+                  <% end %>
+                  <br>
+               </div>
+               
+               
+               </div>
+         </div>            
+     </div> 
+   </div>   
+</div>   
+
