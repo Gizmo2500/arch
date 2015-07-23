@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
   def index
+    if current_user
       time1 = Time.now
       @currentSessions = Session.where(["date > ?",time1]).order('created_at DESC')
       @prevSessions = Session.where(["date < ?",time1]).order('created_at DESC')
       @user = current_user
       @session = Session.new
+    else
+      redirect_to new_user_session_path
+    end
+
   end
 
   def new
