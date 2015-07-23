@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    has_many :posts
    has_many :meetings
-   has_many :sessions, :through => :meetings
+   has_many :mysessions, :through => :meetings
 
 end
