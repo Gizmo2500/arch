@@ -1,0 +1,402 @@
+.post1 {
+   color: white;   
+   font-size: 10px;
+   padding: 1px 3px 0 3px;
+   background-color: #2B8E26;
+   width: 51px;
+   height: 17px;
+   overflow:hidden;
+   border-radius: 2px;
+}
+
+.attendees {
+   width: 210px;
+   /*height: 140px;*/
+   border: 1px solid red;
+}
+
+.chat {
+   width: 210px;
+   height: 160px;
+   border: 1px solid black;
+
+
+}
+
+.log {
+   width: 210px;
+   /*height: 360px;*/
+   border: 1px solid black;
+
+}
+
+
+.img-name {
+   background-color: #ABACAE;
+   width: auto;
+   height: 25px;
+}
+
+/*----------Index Page----------*/
+
+.logo{
+   width: 90px;
+   margin-left: 40px;
+}
+
+.container .row .panel-default>.panel-heading {
+   background-image: linear-gradient(to bottom,#7CB39E 0,#7CB39E 100%);
+   color: white;
+}
+
+.container .panel-default .panel-body .new_session .btn-success{
+   background-image: linear-gradient(to bottom,#7CB39E 0,#4E7F70 100%);
+}
+
+.container .panel-default .panel-body .new_session .btn-success:hover {
+  background-color: #4C7D6E;
+}
+
+.table {
+   font-size: 11px;
+}
+
+.container .panel-default .table .btn-primary{
+   background-image: linear-gradient(to bottom,#64A290 0,#4B796C 100%);
+}
+
+.container .panel-default .table .btn-primary:hover{
+   background-color: #4C7D6E;
+}
+
+.indexBody {
+   background-color: #2A2A2A;
+
+}
+/*----------Show Page----------*/
+
+
+
+div.resizable {
+    font-size: 10px;
+    width: 80px;
+    height: 30px;
+    background: rgba(0,0,255,0.4);
+    padding: 0px;
+    position: absolute;
+
+}
+
+#session_image {
+   padding: 0px;
+   /*margin-right: -20px;*/
+   width: 130px;
+   font-size: 8px;
+}
+
+.menu-li {
+   display: inline-block;
+}
+
+.scroll-bar {
+   overflow: scroll;
+    height: 100%;   
+}
+
+.container-fluid .panel .panel-body .container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.margin-none {
+   margin: 0px;
+}
+
+.padding-none {
+   padding: 0px;
+}
+
+.image {
+   margin-top: 10px;
+}
+
+/*--------Attendees in Show--------*/
+
+.show-user {
+   font-size: 10px;
+   background-color: #2B8E26;
+   color:white;
+   border-radius: 3px;
+   padding: 2px 0 2px 3px;
+   width: 70%;
+   text-align: center;
+   margin: 2px 0 7px 20px;
+}
+
+
+/*--------Chat in Show--------*/
+
+.chat-mss {
+   background-color: #368ECB;
+   font-size: 10px;
+   border-radius: 4px;
+   text-align: right;
+   color: white;
+   width: 70%;
+   height: 30px;
+   padding: 2px 5px 0 0;
+   margin-left: 30px;
+   margin-bottom: 2px;
+
+}
+
+.chat-mss1 {
+   background-color: #CFCFCF;
+   font-size: 10px;
+   border-radius: 4px;
+   width: 40%;
+   height: 20px;
+   padding: 2px 0 0 5px;
+   margin-left: -30px;
+   margin-bottom: 2px;
+}
+
+/*-----------------Comments area----------------*/
+.annotation-user {
+   background-color: gray;
+   color: white;
+   font-size: 10px;
+   padding: 2px;
+}
+
+.annotation-comm {
+   font-size: 10px;
+   margin-bottom: 4px;
+}
+
+.comment-window {
+   height: 282px;
+   padding-top: 20px;
+}
+
+.container .well {
+   margin-bottom: 0px;
+   border-radius: 0px;
+   padding: 5px;
+
+}
+
+.container-fluid .col {
+   padding: 0;
+}
+
+.container-fluid .panel {
+   margin-bottom: 0px;
+   border-radius: 0px;   
+}
+
+.panel-primary .panel-body {
+   padding: 7px 10px 0 10px;
+}
+
+.col .panel-primary {
+   border-color: #5F7CA0;
+}
+
+.container .jumbotron {
+   padding: 10px 2px 10px 2px;
+}
+
+.container .panel-primary .panel-heading {
+   border-radius: 0px;
+   background-image: linear-gradient(to bottom,#5F7CA0 0,#5F7CA0 100%);
+}
+
+.container .panel-primary {
+   border-color: #5F7CA0;
+   border-radius: 0px;
+}
+
+body .panel-primary>.panel-heading {
+   border-radius: 0px;
+   background-image: linear-gradient(to bottom,#5F7CA0 0,#5F7CA0 100%);
+}
+
+/*test*/
+
+body {
+   background: #441C47;
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  /*text-align: center;*/
+  /*padding-top: 10px;*/
+  color: #939596;
+}
+h1 {
+  font-size: 1.75em;
+}
+canvas {
+   background: rgba(255,255,255,0);
+   display: block;
+   position: absolute;
+   /*margin: 30px auto 10px;*/
+   /*width: 855;*/
+   /*height: 475;*/
+   /*box-shadow: 0 4px 0 0 #222;*/
+   cursor: url(https://raw.githubusercontent.com/mcnitt/simple-jquery-drawing-app/master/img/cursor.png), crosshair;
+}
+.controls {
+   min-height: 60px;
+   margin: 0 auto;
+   width: 600px;
+   border-radius: 5px;
+   overflow: hidden;
+}
+ul {
+   list-style:none;
+   margin: 0;
+   /*padding: 20px 10px 5px;*/
+   /*text-align: center;*/
+  background-color: white;
+  /*border-radius: 5px;*/
+}
+/*
+ul li, #newColor {
+   display:block;
+   height: 54px;
+   width: 54px;
+   border-radius: 60px;
+   cursor: pointer;
+   border: 0;
+}
+
+ul li {
+   display: inline-block;
+   margin: 0 5px 10px;
+}
+
+.red {
+   background: #fc4c4f;
+}
+
+.blue {
+   background: #4fa3fc;
+}
+
+.yellow {
+   background: #ECD13F;
+}
+
+.selected {
+   border: 7px solid #384047;
+   width: 40px;
+   height: 40px;
+}
+button {
+   background: #68B25B;
+   box-shadow: 0 3px 0 0 #6A845F;
+   color: #fff;
+   outline: none;
+   cursor: pointer;
+   text-shadow: 0 1px #6A845F;
+   display: block;
+   font-size: 16px;
+   line-height: 40px;
+}
+#revealColorSelect {
+   border: none;
+   border-radius: 5px;
+   margin: 10px auto;
+   padding: 5px 20px;
+   width: 160px;
+}
+*/
+/* New Color Palette */
+/*
+#colorSelect {
+   background: #fff;
+   border-radius: 5px;
+   clear: both;
+   margin: 20px auto 0;
+   padding: 10px;
+   width: 305px;
+   position: relative;
+      
+   display:none;
+}
+#colorSelect:after {
+   bottom: 100%;
+   left: 50%;
+   border: solid transparent;
+   content: " ";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+   border-color: rgba(255, 255, 255, 0);
+   border-bottom-color: #fff;
+   border-width: 10px;
+   margin-left: -10px;
+}
+
+#newColor {
+   width: 80px;
+   height: 80px;
+   border-radius: 3px;
+   box-shadow: none;
+   float: left;
+   border: none;
+   margin: 10px 20px 20px 10px;
+
+}
+.sliders p {
+   margin: 8px 0;
+   vertical-align: middle;
+}
+.sliders label {
+   display: inline-block;
+   margin: 0 10px 0 0;
+   width: 35px;
+   font-size: 14px;
+   color: #6D574E;
+}
+.sliders input {
+   position: relative;
+   top: 2px;
+}
+#colorSelect button {
+   border: none;
+   border-top: 1px solid #6A845F;
+   border-radius: 0 0 5px 5px;
+   clear: both;
+   margin: 10px -10px -7px;
+   padding: 5px 10px;
+   width: 325px;
+} 
+*/
+
+/*Login page*/
+
+.login {
+   color: white;
+   display: inline;
+
+}
+.field1 {
+   color: black;
+}
+.lbtn {
+   color: black;
+}
+.lpage {
+   background-color: black;
+}
+
+
+
+

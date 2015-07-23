@@ -5,10 +5,59 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <!-- JavaScript Graphics Library -->
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> 
+  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/> -->
+  
+  
+
 </head>
-<body>
+<body class="body">
+    <nav class="navbar-inverse navbar-default navbar-fixed-top myNav">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+           
+          <a href="/"><img src='<%= asset_path('archlogo.png') %>' class="img-responsive" style="height:60px;"></a>
+          </div>
 
-<%= yield %>
 
+
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-inverse">
+      <% if user_signed_in? %>
+                  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                  <li><%= link_to "Sign in", new_user_session_path %></li>
+              <% end %>
+			
+			<li><%= link_to "Sessions", mysessions_path %></li>
+			<li><%=link_to "Invite", new_user_invitation_path %> </li>
+      <% if current_user %>
+      <p class="navbar-text navbar-pull-right">Signed in as <a href="#" class="navbar-link"><%= current_user.email %></a></p>
+      <% end %> 
+	</div>
+
+  <%= yield %>
+
+
+  
 </body>
 </html>

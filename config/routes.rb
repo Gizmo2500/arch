@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+
+
+  
+
+  # get 'posts/edit'
+  # get 'posts/index'
+  # get 'posts/new'
+  devise_for :users
+  
+  root 'mysessions#index'
+  
+  resources :mysessions do
+    resources :posts, shallow: true
+  end
+  
+  # Updates all the posts in the session
+  # post 'sessions/:id' => 'sessions#update', as: :updateposts
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

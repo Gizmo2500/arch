@@ -5,7 +5,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 
 gem 'pg'
-
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'devise'
+gem 'bootbox-rails', '~>0.4'
+gem 'devise_invitable'
+gem 'bootstrap-datepicker-rails'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -16,7 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem "pry-rails"
+gem "paperclip"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
