@@ -197,8 +197,12 @@ $('.pencil').on("click", function(e){
         time = time + 5;
         time = time + time1.substring(2);
         return time;
-      } else {
+      } else if (time < 13) {
         time = time - 7;
+        time = time + time1.substring(2);
+        return time;
+      }else{
+        time = time - 12;
         time = time + time1.substring(2);
         return time;
       }
