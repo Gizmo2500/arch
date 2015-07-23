@@ -1,20 +1,17 @@
+<div class="indexBody">
 <br>
+<%= image_tag "archlogo.png", :class => "logo" %>
 <div class="container">
    <div class="row">
-      
-      <div class="col-md-4 jumbotron">
-          <h3>Create a new session</h3>         
-          <% if @session.errors.any? %>
-             <% @session.errors.full_messages.each do |error|%>
-             <p class="text-danger">
-                <%= error%>
-             </p>
-             <% end %>
-          <% end %>         
-           
-           
-
-         <%=form_for @session, html: { multipart: true } do |f|  %>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Create a new session</h3>
+          </div>
+          <div class="panel-body">
+                  
+            <%=form_for @session, html: { multipart: true } do |f|  %>
             
             <h5><%= f.label "Session Name:" %> <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%></h5>   
             <h5><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></h5>   
@@ -23,58 +20,94 @@
             <h5><%= f.label "Time:" %>  <%= f.time_select :time,:placeholder => "hh:mm", :class =>"form-control" %></h5>
             <%= f.submit "Create Session", :class => "btn btn-success"%>
          <% end %>
-
-         
-
+         </div>
+        </div>      
       </div>
-      <!-- <div class="col-md-1"></div> -->
-      <div class="col-md-8">
-         <div class="well">
+
+<!-- Current Sessions -->
+      
+      <div class="col-md-6">
          <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Sessions</div>
+          <div class="panel-heading"><h3 class="panel-title">Current Sessions</h3></div>
           <div class="table-responsive">
-               <table class="table ">
-                  <thead>
-                     <th>Session</th>
-                     <th>Date</th>
-                     <th>time</th>
-                     <th>Anttendees</th>
-                     <th>Edit</th>
-                  </thead>
-                  <tbody>
-                  <% @sessions.each do |session| %>   
-                     <tr>
-                        <td><%= session.name %></td>
-                        <td><%= session.date %></td>
-                        <td><%= session.time.strftime("%I:%M%p")  %></td>
-                        <td>
-                            <%= @user.email %>
-                            <span class="badge">4</span>
-                        </td>
-                        <td>
-                           <%= link_to "Open", session_path(session), :class => "btn btn-primary"%>
-                           <%= link_to "Edit", edit_session_path(session), :class => "btn btn-default"%>
-                           <%= link_to "Delete", session_path(session), :method => :delete,:class => "btn btn-default", data: {confirm: "Are you Sure you want to delete this session?         NOTE: You won't be able to recover this session"} %>
-                        </td>
-                     </tr>
-                  <% end %>      
-                  </tbody>
-               </table>
+             <table class="table ">
+                <thead>
+                   <th>Session</th>
+                   <th>Date</th>
+                   <th>time</th>
+                   <th>Anttendees</th>
+                   <th>Edit</th>
+                </thead>
+                <tbody>
+                <% @currentSessions.each do |session| %>   
+                   <tr>
+                      <td><%= session.name %></td>
+                      <td><%= session.date %></td>
+                      <td><%= session.time.strftime("%I:%M%p")  %></td>
+                      <td>
+                          <%= @user.email %>
+                          <span class="badge">4</span>
+                      </td>
+                      <td>
+
+                         <%= link_to "Open", session_path(session), :class => "btn btn-primary open btn-xs"%>
+                         <%= link_to "Edit", edit_session_path(session), :class => "btn btn-default btn-xs"%>
+                         <%= link_to "Delete", session_path(session), :method => :delete,:class => "btn btn-default btn-xs", data: {confirm: "Are you Sure you want to delete this session?         NOTE: You won't be able to recover this session"} %>
+                      </td>
+                   </tr>
+                <% end %>      
+                </tbody>
+             </table>
             </div>         
 
-            </div>
+        </div>
+      </div> <!-- Closes col-md-8 -->
 
+  <!-- Previous Sessions -->
+      <div class="col-md-6">
+         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Past Sessions</h3></div>
+          <div class="table-responsive">
+             <table class="table ">
+                <thead>
+                   <th>Session</th>
+                   <th>Date</th>
+                   <th>time</th>
+                   <th>Anttendees</th>
+                   <th>Edit</th>
+                </thead>
+                <tbody>
+                <% @prevSessions.each do |session| %>   
+                   <tr>
+                      <td><%= session.name %></td>
+                      <td><%= session.date %></td>
+                      <td><%= session.time.strftime("%I:%M%p")  %></td>
+                      <td>
+                          <%= @user.email %>
+                          <span class="badge">4</span>
+                      </td>
+                      <td>
+                         <%= link_to "Open", session_path(session), :class => "btn btn-primary open btn-xs"%>
+                         <%= link_to "Edit", edit_session_path(session), :class => "btn btn-default btn-xs"%>
+                         <%= link_to "Delete", session_path(session), :method => :delete,:class => "btn btn-default btn-xs", data: {confirm: "Are you Sure you want to delete this session?         NOTE: You won't be able to recover this session"} %>
+                      </td>
+                   </tr>
+                <% end %>      
+                </tbody>
+             </table>
+            </div>         
 
-      </div>
-      
-   </div>
-
-
-  
-   
+        </div>
+      </div> <!-- Closes col-md-8 -->
 
 </div>
 
 
-
+</div>
+<% if @session.errors.any? %>
+             <% @session.errors.full_messages.each do |error|%>
+             <p class="text-danger">
+                <%= error%>
+             </p>
+             <% end %>
+          <% end %>         
