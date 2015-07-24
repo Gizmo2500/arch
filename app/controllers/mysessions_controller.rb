@@ -6,8 +6,8 @@ rescue_from ActionController::ParameterMissing, with: :missing_file
       if Mysession.first
         time1 = Time.now
         @user = current_user
-        @currentSessions = @user.mysessions.where(["date > ?",time1]).order('created_at DESC')
-        @prevSessions = @user.mysessions.where(["date < ?",time1]).order('created_at DESC')
+        @currentSessions = @user.mysessions.where(["date > ?",time1]).order('date ASC')
+        @prevSessions = @user.mysessions.where(["date < ?",time1]).order('date ASC')
         @allUsers = User.all 
         @mysession = Mysession.new
       else
