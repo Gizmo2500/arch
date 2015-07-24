@@ -43,7 +43,7 @@
                               
           <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
           
-          <li class="menu-li"><button class="btn btn-default btn-xs save-com" type="button"> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button></li>
+          <!-- <li class="menu-li"><button class="btn btn-default btn-xs save-com" type="button"> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button></li> -->
           
         
         </div>
@@ -74,8 +74,11 @@
           <h3 class="panel-title">Attendees</h3>
         </div>
         <div class="panel-body scroll-bar">
-           <div class="show-user"><%= @user.email %> </div> 
-           <div class="show-user" style="background-color: blue; color: white;">Tom Peterson </div>   
+           <!-- <div class="show-user"><%= @user.email %> </div>  -->
+           
+           <% @mysession.users.each do |user| %>
+           <div class="show-user" style="background-color: #498F44; color: white;"><%=  user.email %></div>
+            <% end %>
 
         </div>
      </div>
@@ -108,7 +111,7 @@
            </div>
            <div class="panel-body scroll-bar comment-window" >
                <% @posts.each do |post| %>
-                <div class="annotation-user"><%= post.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %> - <%=  @user.email %> </div>
+                <div class="annotation-user"><%= post.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %> - <%=  post.creator %> </div>
                 <div class="annotation-comm"><b> <%=  post.title %> </b><%= post.comments %></div>
                   
                <% end %>                  

@@ -13,11 +13,28 @@
                   
             <%=form_for @mysession, html: { multipart: true } do |f|  %>
             
-            <h5><%= f.label "Session Name:" %> <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%></h5>   
-            <h5><%= f.label "Session topic: " %> <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %></h5>   
-             <h5><b> Invite:</b> <textarea class="form-control" rows="3" cols="25" placeholder="Enter email addresses here..."></textarea></h5>
+            <!-- Session Name -->
+            <h5><%= f.label "Session Name:" %></h5> 
+            <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%>   
+            
+            <!-- Session Topic -->
+            <h5><%= f.label "Session topic: " %> </h5>   <%= f.text_area :description , size: "13x3" ,:placeholder => "Discussion topic...", :class => "form-control" %>
+            
+             <!-- Attendiees -->
+             <h5><b> Invite:</b> <br>
+            <% if @allUsers %>
+               <%=  collection_select(:users, :user_id, @allUsers, :id, :email, {:prompt => true}) %>
+            <% end %>
+            <button class="invite-form-button btn btn-default btn-xs">Invite</button>
+            <button class="delete-form-button btn btn-default btn-xs">Delete</button>
+             <%= f.text_area :other, size: "18x3", :class =>"form-control email-area", :readonly => true %>
+            
+            <!-- Date -->
             <h5><%= f.label "Date:" %>  <%= f.date_select :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></h5>
+            
+            <!-- Time -->
             <h5><%= f.label "Time:" %>  <%= f.time_select :time,:placeholder => "hh:mm", :class =>"form-control" %></h5>
+            
             <%= f.submit "Create Session", :class => "btn btn-success"%>
          <% end %>
          </div>
@@ -46,8 +63,8 @@
                         <td><%= mysession.date %></td>
                         <td><%= mysession.time.strftime("%I:%M%p")  %></td>
                         <td>
-                            <%= @user.email %>
-                            <span class="badge">4</span>
+                            <%= mysession.creator%>
+                            <span class="badge"><%= mysession.users.length%></span>
                         </td>
                         <td>
 
@@ -86,8 +103,8 @@
                         <td><%= mysession.date %></td>
                         <td><%= mysession.time.strftime("%I:%M%p")  %></td>
                         <td>
-                            <%= @user.email %>
-                            <span class="badge">4</span>
+                            <%= mysession.creator%>
+                            <span class="badge"><%= mysession.users.length%></span>
                         </td>
                         <td>
                            <%= link_to "Open", mysession_path(mysession), :class => "btn btn-primary open btn-xs"%>

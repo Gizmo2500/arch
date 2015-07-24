@@ -75,8 +75,31 @@ $(document).ready(function() {
 //     $canvas.mouseup();
 // });
 
+// -------------------------INDEX PAGE
 
+//-------------------------Adds attendee's emails to list-------------------------
+$(document).on("click", ".invite-form-button", function(e){
+    e.preventDefault();
+  var mails;  
+  var id = $('#users_user_id').val();
+  var email = $('#users_user_id').find(":selected").text();
+  if ($('.email-area').text() === "") {
+    mails = ($('.email-area').text() + ", " + email).substring(2);
+  }else{
+    mails = $('.email-area').text() + ", " + email;
+  }
+  $('.email-area').text(mails);
+  console.log("id: ", id);
+  console.log("email: ", email);
 
+});
+
+$(document).on("click", ".delete-form-button", function(e){
+    e.preventDefault();
+    $('.email-area').text("");
+});
+
+// -------------------------SHOW PAGE
 
 //-------------------------Add Markups-------------------------
 $('.pencil').on("click", function(e){
@@ -111,11 +134,10 @@ $('.pencil').on("click", function(e){
          } 
     }    
 
-// ----------- Activate Post -----------
+// ----------- Activate Post button-----------
 
   $(document).on("click", ".post-button", function(){
       activPost = "1";
-      // console.log("1", activPost);
   });
     
 // ----------- Adds Posts -----------
