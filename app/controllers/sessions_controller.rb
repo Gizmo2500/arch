@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  rescue_from ActionController::ParameterMissing, with: :missing_file
+
   def index
     if current_user
       if Session.first
@@ -68,5 +70,9 @@ class SessionsController < ApplicationController
 
   def session_params
       params.require(:session).permit(:name, :time,:description, :date, :image_file_name, :image_content_type, :image, :user_id)
+  end
+
+  def missing_file
+    render "Missing file"
   end
 end

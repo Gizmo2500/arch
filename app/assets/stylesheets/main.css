@@ -44,6 +44,10 @@
    margin-left: 40px;
 }
 
+.email-area {
+   margin-top: 4px;
+}
+
 .container .row .panel-default>.panel-heading {
    background-image: linear-gradient(to bottom,#7CB39E 0,#7CB39E 100%);
    color: white;
@@ -87,7 +91,7 @@ div.resizable {
 
 }
 
-#session_image {
+#mysession_image {
    padding: 0px;
    /*margin-right: -20px;*/
    width: 130px;
@@ -99,7 +103,7 @@ div.resizable {
 }
 
 .scroll-bar {
-   overflow: scroll;
+   overflow-y: scroll;
     height: 100%;   
 }
 
@@ -180,7 +184,7 @@ div.resizable {
 }
 
 .comment-window {
-   height: 282px;
+   height: 262px;
    padding-top: 20px;
 }
 
