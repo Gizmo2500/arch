@@ -22,11 +22,12 @@ class MysessionsController < ApplicationController
 
   def create
       @mysession = Mysession.new mysession_params
+      user = current_user
+      @mysession.creator = user.email
       if @mysession.save
-        user = current_user
         addAttendees(@mysession)
-        user.mysessions.push(@mysession)  
-         redirect_to mysessions_path
+        user.mysessions.push(@mysession) 
+        redirect_to mysessions_path
       else
         redirect_to(:back)
       end
@@ -69,7 +70,6 @@ class MysessionsController < ApplicationController
     attendessList = mysession.other.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)
     attendessList.each do |attendee|
       user = User.find_by email: attendee
-      
       user.mysessions.push(mysession)
     end
   end

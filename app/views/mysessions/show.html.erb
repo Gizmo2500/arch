@@ -108,7 +108,7 @@
            </div>
            <div class="panel-body scroll-bar comment-window" >
                <% @posts.each do |post| %>
-                <div class="annotation-user"><%= post.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %> - <%=  @user.email %> </div>
+                <div class="annotation-user"><%= post.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M%p") %> - <%=  post.creator %> </div>
                 <div class="annotation-comm"><b> <%=  post.title %> </b><%= post.comments %></div>
                   
                <% end %>                  
