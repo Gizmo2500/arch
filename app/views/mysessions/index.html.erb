@@ -103,8 +103,8 @@
                         <td><%= mysession.date %></td>
                         <td><%= mysession.time.strftime("%I:%M%p")  %></td>
                         <td>
-                            <%= @user.email %>
-                            <span class="badge">4</span>
+                            <%= mysession.creator%>
+                            <span class="badge"><%= mysession.users.length%></span>
                         </td>
                         <td>
                            <%= link_to "Open", mysession_path(mysession), :class => "btn btn-primary open btn-xs"%>

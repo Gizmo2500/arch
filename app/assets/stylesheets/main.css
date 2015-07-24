@@ -49,11 +49,11 @@
    color: white;
 }
 
-.container .panel-default .panel-body .new_session .btn-success{
+.container .panel-default .panel-body .new_mysession .btn-success{
    background-image: linear-gradient(to bottom,#7CB39E 0,#4E7F70 100%);
 }
 
-.container .panel-default .panel-body .new_session .btn-success:hover {
+.container .panel-default .panel-body .new_mysession .btn-success:hover {
   background-color: #4C7D6E;
 }
 
