@@ -75,8 +75,27 @@ $(document).ready(function() {
 //     $canvas.mouseup();
 // });
 
+// -------------------------INDEX PAGE
+
+//-------------------------Adds attendee's emails to list-------------------------
+$(document).on("click", ".invite-form-button", function(e){
+    e.preventDefault();
+  var mails;  
+  var id = $('#users_user_id').val();
+  var email = $('#users_user_id').find(":selected").text();
+  if ($('.email-area').text() === "") {
+    mails = ($('.email-area').text() + ", " + email).substring(2);
+  }else{
+    mails = $('.email-area').text() + ", " + email;
+  }
+  $('.email-area').text(mails);
+  console.log("id: ", id);
+  console.log("email: ", email);
+
+});
 
 
+// -------------------------SHOW PAGE
 
 //-------------------------Add Markups-------------------------
 $('.pencil').on("click", function(e){
