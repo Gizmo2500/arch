@@ -1,4 +1,6 @@
 class MysessionsController < ApplicationController
+rescue_from ActionController::ParameterMissing, with: :missing_file
+
   def index
     if current_user
       if Mysession.first
@@ -80,4 +82,8 @@ class MysessionsController < ApplicationController
   def mysession_params
       params.require(:mysession).permit(:name, :time,:description, :date, :image_file_name, :image_content_type, :image, :user_id, :other)
   end
+
+   def missing_file
+    render plain: "Choose file before uploading", status: 404
+   end
 end

@@ -19,7 +19,7 @@
             <%= f.text_field :name ,:placeholder => "Project name..." , :class =>"form-control"%>   
             
             <!-- Session Topic -->
-            <h5><%= f.label "Session topic: " %> </h5>   <%= f.text_area :description , size: "18x5" ,:placeholder => "Discussion topic...", :class => "form-control" %>
+            <h5><%= f.label "Session topic: " %> </h5>   <%= f.text_area :description , size: "13x3" ,:placeholder => "Discussion topic...", :class => "form-control" %>
             
              <!-- Attendiees -->
              <h5><b> Invite:</b> <br>
@@ -27,7 +27,8 @@
                <%=  collection_select(:users, :user_id, @allUsers, :id, :email, {:prompt => true}) %>
             <% end %>
             <button class="invite-form-button btn btn-default btn-xs">Invite</button>
-             <%= f.text_area :other, size: "18x3", :class =>"form-control email-area" %>
+            <button class="delete-form-button btn btn-default btn-xs">Delete</button>
+             <%= f.text_area :other, size: "18x3", :class =>"form-control email-area", :readonly => true %>
             
             <!-- Date -->
             <h5><%= f.label "Date:" %>  <%= f.date_select :date,:placeholder => "mm/dd/yyyy", :class =>"form-control" %></h5>

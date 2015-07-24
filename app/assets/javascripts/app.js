@@ -94,6 +94,10 @@ $(document).on("click", ".invite-form-button", function(e){
 
 });
 
+$(document).on("click", ".delete-form-button", function(e){
+    e.preventDefault();
+    $('.email-area').text("");
+});
 
 // -------------------------SHOW PAGE
 
@@ -130,11 +134,10 @@ $('.pencil').on("click", function(e){
          } 
     }    
 
-// ----------- Activate Post -----------
+// ----------- Activate Post button-----------
 
   $(document).on("click", ".post-button", function(){
       activPost = "1";
-      // console.log("1", activPost);
   });
     
 // ----------- Adds Posts -----------
