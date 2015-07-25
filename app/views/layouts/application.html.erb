@@ -34,7 +34,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#"><%= image_tag "archlogo.png", :class => "logo" %></a>
       <!-- Search bar -->
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -47,14 +47,11 @@
       <!-- Links to the right -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right navbar-inverse">
-          
+            <% if current_user %>
+            <li class="navbar-text " style="color:#A0DC7F;">Welcome <span class="text-right" style="color: white"><%= current_user.email %></span>&nbsp</li>
+            <% end %>
           <li><%=link_to "Invite", new_user_invitation_path %> </li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-
-          <% if current_user %>
-            <li class="navbar-text navbar-right text-right" style="color:white;">Welcome <b class="text-right" style="color: white"><%= current_user.email %></b>&nbsp</li>
-          <% end %> 
-      
         </ul>
       </div>
     

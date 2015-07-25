@@ -1,47 +1,16 @@
-.post1 {
-   color: white;   
-   font-size: 10px;
-   padding: 1px 3px 0 3px;
-   background-color: #2B8E26;
-   width: 51px;
-   height: 17px;
-   overflow:hidden;
-   border-radius: 2px;
-}
 
-.attendees {
-   width: 210px;
-   /*height: 140px;*/
-   border: 1px solid red;
-}
-
-.chat {
-   width: 210px;
-   height: 160px;
-   border: 1px solid black;
-
-
-}
-
-.log {
-   width: 210px;
-   /*height: 360px;*/
-   border: 1px solid black;
-
-}
-
-
-.img-name {
-   background-color: #ABACAE;
-   width: auto;
-   height: 25px;
-}
 
 /*----------Index Page----------*/
 
+.body .navbar-inverse {
+   border-radius: 0px;
+   margin-bottom: 0px;
+}
+
 .logo{
-   width: 90px;
-   margin-left: 40px;
+   width: 40px;
+   margin-top: -5px;
+   margin-left: 5px;
 }
 
 .email-area {
@@ -79,7 +48,20 @@
 }
 /*----------Show Page----------*/
 
+.body .container-fluid {
+   padding: 0px;
+}
 
+.post1 {
+   color: white;   
+   font-size: 10px;
+   padding: 1px 3px 0 3px;
+   background-color: #2B8E26;
+   width: 51px;
+   height: 17px;
+   overflow:hidden;
+   border-radius: 2px;
+}
 
 div.resizable {
     font-size: 10px;
@@ -89,44 +71,6 @@ div.resizable {
     padding: 0px;
     position: absolute;
 
-}
-
-#mysession_image {
-   padding: 0px;
-   /*margin-right: -20px;*/
-   width: 130px;
-   font-size: 8px;
-}
-
-.menu-li {
-   display: inline-block;
-}
-
-.scroll-bar {
-   overflow-y: scroll;
-    height: 100%;   
-}
-
-.container-fluid .panel .panel-body .container {
-  padding: 0px;
-  margin: 0px;
-}
-
-.container .jumbotron, .container-fluid .jumbotron {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.margin-none {
-   margin: 0px;
-}
-
-.padding-none {
-   padding: 0px;
-}
-
-.image {
-   margin-top: 10px;
 }
 
 /*--------Attendees in Show--------*/
@@ -142,6 +86,10 @@ div.resizable {
    margin: 2px 0 7px 20px;
 }
 
+.attendees {
+   width: 210px;
+   border: 1px solid red;
+}
 
 /*--------Chat in Show--------*/
 
@@ -169,6 +117,67 @@ div.resizable {
    margin-left: -30px;
    margin-bottom: 2px;
 }
+
+.chat {
+   width: 210px;
+   height: 160px;
+   border: 1px solid black;
+}
+
+
+.log {
+   width: 210px;
+   border: 1px solid black;
+}
+
+.menu-li {
+   display: inline-block;
+}
+
+
+/*---------Image----------*/
+.img-name {
+   background-color: #ABACAE;
+   width: auto;
+   height: 25px;
+}
+
+#mysession_image {
+   padding: 0px;
+   width: 130px;
+   font-size: 8px;
+}
+
+.image {
+   margin-top: 10px;
+}
+
+.container-fluid .panel .panel-body .container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.margin-none {
+   margin: 0px;
+}
+
+.padding-none {
+   padding: 0px;
+}
+
+.scroll-bar {
+   overflow-y: scroll;
+    height: 100%;   
+}
+
+
+
+
 
 /*-----------------Comments area----------------*/
 .annotation-user {
