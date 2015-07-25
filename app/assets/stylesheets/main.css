@@ -140,6 +140,7 @@ div.resizable {
    background-color: #ABACAE;
    width: auto;
    height: 25px;
+   position: relative;
 }
 
 #mysession_image {
@@ -150,6 +151,7 @@ div.resizable {
 
 .image {
    margin-top: 10px;
+   width: auto;
 }
 
 .container-fluid .panel .panel-body .container {
