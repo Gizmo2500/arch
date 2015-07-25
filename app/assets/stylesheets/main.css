@@ -1,5 +1,29 @@
+/*----------Log In Page----------*/
+.login-button {
+   margin-top: 25px;
+}
 
+.lpage, .body {
+   background-color: #232223;
+}
 
+.logo1 {
+   width: 150px;
+   margin-left: 20px;
+}
+
+.body .login .panel-default>.panel-heading {
+   background-image: linear-gradient(to bottom,#7CB39E 0,#7CB39E 100%);
+   color: white;
+}
+
+#new_user .panel-body .login-button{
+   background-image: linear-gradient(to bottom,#7CB39E 0,#4E7F70 100%);
+}
+
+#new_user .panel-body .login-button {
+  background-color: #4C7D6E;
+}
 /*----------Index Page----------*/
 
 .body .navbar-inverse {
@@ -7,7 +31,7 @@
    margin-bottom: 0px;
 }
 
-.logo{
+.logo2{
    width: 40px;
    margin-top: -5px;
    margin-left: 5px;
