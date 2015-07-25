@@ -55,13 +55,15 @@
         <br>
         
 <!-- Image -->
+
               <!-- <canvas class="canva" width="855" height="475"></canvas>  -->
+              <!-- <div class="" style="width: 1035px; height: 600px;"> -->
               <% if @mysession.image_file_name != nil %>
                  <p class="shade"><%= image_tag @mysession.image.url , class: "img-responsive image" %></p>
               <% else %>
                  <p>Add an Image</p>
               <% end %>
-            
+              <!-- </div> -->
               
       </div>
     </div>

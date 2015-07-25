@@ -19,10 +19,11 @@
                
                   <%=form_for @mysession, html: { multipart: true } do |f|  %>
                      <br>
-                     <p><%= f.label :name %>        <%= f.text_field :name %></p>   
-                     <p><%= f.label :description %> <%= f.text_area :description %></p>   
-                     <p><%= f.label :date %>        <%= f.text_field :date %></p>
-                     <p><%= f.label :time %>        <%= f.text_field :time %></p>
+                     <p><%= f.label :name %>        <%= f.text_field :name, :class =>"form-control" %></p>   
+                     <p><%= f.label :description %> <%= f.text_area :description, :class =>"form-control" %></p>   
+                     <p><%= f.label :date %>        <%= f.text_field :date, :class =>"form-control" %></p>
+                     <p><%= f.label :time %>        <%= f.text_field :time,:placeholder => "hh:mm", :class =>"form-control" %></p>
+                     <p><%= f.label "Attendees" %>        <%= f.text_field :other, :class =>"form-control", :readonly => true  %></p>
                      <p><%= f.label :image %>       <%=  @mysession.image_file_name %></p>
                      <hr>
                      <%= f.submit "Update Session", :class => :"btn btn-primary" %>

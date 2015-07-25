@@ -1,31 +1,86 @@
 <div class="login"> 
-<h2>Sign up</h2>
-
+<br><br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <p class="field1"><%= f.email_field :email, autofocus: true %></p>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+    <%= image_tag "archlogo.png", :class => "logo1" %>
   </div>
+  <div class="col-md-5"></div>
+</div>
+<br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <p class="field1"><%= f.password_field :password, autocomplete: "off" %></p>
-  </div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Sign up</h3>
+          </div>
+          <div class="panel-body">
+        <!-- Email & Password & Butoon -->    
+            <div class="row">
+              <!-- <div class="col-md-1"></div> -->
+              <div class="col-md-4">
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <p class="field1"><%= f.email_field :email, autofocus: true %></p>
+                </div>                                 
+              </div>              
+              <div class="col-md-5">
+                <div class="field">
+                  <%= f.label :password %>
+                  <% if @validatable %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <p class="field1"><%= f.password_field :password, autocomplete: "off" %></p>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <p class="field1"><%= f.password_field :password_confirmation, autocomplete: "off" %></p>
-  </div>
+                    <div class="field">
+                      <%= f.label :password_confirmation %><br />
+                      <p class="field1"><%= f.password_field :password_confirmation, autocomplete: "off" %></p>
+                    </div>
 
-  <div class="actions lbtn">
-    <%= f.submit "Sign up" %>
+                </div>                  
+              </div>              
+              <div class="col_md-1">
+                  <div class="actions lbtn">
+                    <%= f.submit "Sign Up" , :class => "btn btn-success login-button "%>
+                  </div>                  
+                  <br>
+                  <p><%= render "devise/shared/links" %></p>
+              </div>
+            </div>
+          <!-- Remember me & Sign up -->
+            <div class="row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="col-md-4">
+                    
+                </div>
+                <div class="col-md-4">
+                    
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+          </div>
+        </div>
+      
+
+
   </div>
+  <div class="col-md-3"></div>
+</div>
+
+
+
+
+
+
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+
 </div>

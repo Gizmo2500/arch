@@ -1,47 +1,40 @@
-.post1 {
-   color: white;   
-   font-size: 10px;
-   padding: 1px 3px 0 3px;
-   background-color: #2B8E26;
-   width: 51px;
-   height: 17px;
-   overflow:hidden;
-   border-radius: 2px;
+/*----------Log In Page----------*/
+.login-button {
+   margin-top: 25px;
 }
 
-.attendees {
-   width: 210px;
-   /*height: 140px;*/
-   border: 1px solid red;
+.lpage, .body {
+   background-color: #232223;
 }
 
-.chat {
-   width: 210px;
-   height: 160px;
-   border: 1px solid black;
-
-
+.logo1 {
+   width: 150px;
+   margin-left: 20px;
 }
 
-.log {
-   width: 210px;
-   /*height: 360px;*/
-   border: 1px solid black;
-
+.body .login .panel-default>.panel-heading {
+   background-image: linear-gradient(to bottom,#7CB39E 0,#7CB39E 100%);
+   color: white;
 }
 
-
-.img-name {
-   background-color: #ABACAE;
-   width: auto;
-   height: 25px;
+#new_user .panel-body .login-button{
+   background-image: linear-gradient(to bottom,#7CB39E 0,#4E7F70 100%);
 }
 
+#new_user .panel-body .login-button {
+  background-color: #4C7D6E;
+}
 /*----------Index Page----------*/
 
-.logo{
-   width: 90px;
-   margin-left: 40px;
+.body .navbar-inverse {
+   border-radius: 0px;
+   margin-bottom: 0px;
+}
+
+.logo2{
+   width: 40px;
+   margin-top: -5px;
+   margin-left: 5px;
 }
 
 .email-area {
@@ -79,7 +72,20 @@
 }
 /*----------Show Page----------*/
 
+.body .container-fluid {
+   padding: 0px;
+}
 
+.post1 {
+   color: white;   
+   font-size: 10px;
+   padding: 1px 3px 0 3px;
+   background-color: #2B8E26;
+   width: 51px;
+   height: 17px;
+   overflow:hidden;
+   border-radius: 2px;
+}
 
 div.resizable {
     font-size: 10px;
@@ -89,44 +95,6 @@ div.resizable {
     padding: 0px;
     position: absolute;
 
-}
-
-#mysession_image {
-   padding: 0px;
-   /*margin-right: -20px;*/
-   width: 130px;
-   font-size: 8px;
-}
-
-.menu-li {
-   display: inline-block;
-}
-
-.scroll-bar {
-   overflow-y: scroll;
-    height: 100%;   
-}
-
-.container-fluid .panel .panel-body .container {
-  padding: 0px;
-  margin: 0px;
-}
-
-.container .jumbotron, .container-fluid .jumbotron {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.margin-none {
-   margin: 0px;
-}
-
-.padding-none {
-   padding: 0px;
-}
-
-.image {
-   margin-top: 10px;
 }
 
 /*--------Attendees in Show--------*/
@@ -142,6 +110,10 @@ div.resizable {
    margin: 2px 0 7px 20px;
 }
 
+.attendees {
+   width: 210px;
+   border: 1px solid red;
+}
 
 /*--------Chat in Show--------*/
 
@@ -169,6 +141,69 @@ div.resizable {
    margin-left: -30px;
    margin-bottom: 2px;
 }
+
+.chat {
+   width: 210px;
+   height: 160px;
+   border: 1px solid black;
+}
+
+
+.log {
+   width: 210px;
+   border: 1px solid black;
+}
+
+.menu-li {
+   display: inline-block;
+}
+
+
+/*---------Image----------*/
+.img-name {
+   background-color: #ABACAE;
+   width: auto;
+   height: 25px;
+   position: relative;
+}
+
+#mysession_image {
+   padding: 0px;
+   width: 130px;
+   font-size: 8px;
+}
+
+.image {
+   margin-top: 10px;
+   width: auto;
+}
+
+.container-fluid .panel .panel-body .container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.margin-none {
+   margin: 0px;
+}
+
+.padding-none {
+   padding: 0px;
+}
+
+.scroll-bar {
+   overflow-y: scroll;
+    height: 100%;   
+}
+
+
+
+
 
 /*-----------------Comments area----------------*/
 .annotation-user {
@@ -386,7 +421,7 @@ button {
 
 /*Login page*/
 
-.login {
+/*.login {
    color: white;
    display: inline;
 
@@ -404,3 +439,4 @@ button {
 
 
 
+*/
